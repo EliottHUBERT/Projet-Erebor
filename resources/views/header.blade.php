@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../../../../css/bootstrap.css" rel="stylesheet" type="text/css">
         <script src="../../../../js/bootstrap.js" type="script"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <link rel="icon" href="../../../../Images/favicon.svg" sizes="any" type="image/svg+xml">
-        <title>EreborCloud</title>
+        <title>EreborCloud<?php echo str_replace("/", " | ", $_SERVER['REQUEST_URI']); ?></title>
     </head>
     <header>
         <nav class="navbar bg-body-tertiary">

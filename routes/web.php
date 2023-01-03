@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/header', function () {
     return view('header');
 });
+
+Route::get('/dossier', function () {
+    return view('afficheDossier');
+});

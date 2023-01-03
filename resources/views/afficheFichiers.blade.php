@@ -10,24 +10,14 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($fichiers as $fichier)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Fichier1</td>
-                    <td>500mo</td>
-                    <td>10/10/2010</td>
+                    <th scope="row">{{ $fichier->id }}</th>
+                    <td>{{ $fichier->nom }}</td>
+                    <td>{{ $fichier->taille }}</td>
+                    <td>{{ $fichier->date }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Fichier2</td>
-                    <td>500mo</td>
-                    <td>10/10/2010</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Fichier3</td>
-                    <td>500mo</td>
-                    <td>10/10/2010</td>
-                </tr>
+            @endforeach
             </tbody>
         </table>
 

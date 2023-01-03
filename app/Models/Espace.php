@@ -13,4 +13,5 @@ class Espace extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
+
 }

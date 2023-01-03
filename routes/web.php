@@ -21,6 +21,10 @@ Route::get('/header', function () {
     return view('header');
 });
 
-Route::get('/dossier', function () {
-    return view('afficheDossier');
+Route::get('/listeFichiers', function () {
+    return view('afficheFichiers');
 });
+//Route::get('/listeDossiers', function () {
+//    return view('afficheDossiers');
+//});
+Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);

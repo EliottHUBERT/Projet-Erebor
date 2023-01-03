@@ -8,6 +8,23 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-        <title>Affiche Pompier</title>
+        <link rel="icon" href="../../../../Images/favicon.svg" sizes="any" type="image/svg+xml">
+        <title>EreborCloud</title>
     </head>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="../../../../Images/favicon.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                EreborCloud
+              </a>
+              <form class="d-flex" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="basic-addon1">
+                  <button class="btn btn-outline-dark" type="submit">Rechercher</button>
+                </div>
+              </form>
+            </div>
+        </nav>
+
+    </header>

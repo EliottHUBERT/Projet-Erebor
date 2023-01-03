@@ -7,6 +7,7 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Taille</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +17,13 @@
                     <td>{{ $fichier->nom }}</td>
                     <td>{{ $fichier->taille }}</td>
                     <td>{{ $fichier->date }}</td>
+                    <td>
+                        <div>
+                            <button class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
+                            <button class="btn btn-success"><img src="../../../../Images/download.svg"></button>
+                        </div>
+                    </td>
+
                 </tr>
             @endforeach
             </tbody>

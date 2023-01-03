@@ -1,6 +1,6 @@
 @include('header')
     <body>
-        <div class="border border-dark" style="margin-left: 10%;">
+        <div class="border border-dark" style="margin-left: 15%;">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -21,9 +21,12 @@
                     <td>{{ $espace->quotaMax }}mo</td>
                     <td>{{ $espace->nbFiles }}</td>
                     <td>
-                        <form method="GET" action="/listeFichiers/{{$espace->id}}">  
-                            <button type="submit" class="btn btn-success">Ouvrir</button>
-                        </form>      
+                        <div class="btn-group">
+                            <button class="btn btn-success" onclick="location.href='/listeFichiers/{{$espace->id}}'"><img src="../../../../Images/open.svg"></button>
+                            <button class="btn btn-primary" onclick="location.href='/listeDossiers'"><img src="../../../../Images/settings.svg"></button>
+                            <button class="btn btn-secondary"><img src="../../../../Images/user.svg"></button>
+                            <button class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
+                        </div>
                     </td>
                 </tr>
             @endforeach

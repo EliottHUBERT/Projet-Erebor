@@ -26,4 +26,5 @@ class fichierController extends Controller
         return view('afficheFichiers',['fichiers'=>$fichiers]);
 
     }
+
 }

@@ -1,10 +1,14 @@
 @include('header')
     <body>
-        <div class="border border-dark" style="margin-left: 15%;">
+        <div style="background-color: #3d3d3d; height: calc(100vh - 3.5rem); max-width: 15%; border-top-right-radius: 15px;">
+            <p>qsdsq</p>
+        </div>
+        <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 100%; border-radius: 15px;">
+
         <table class="table">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col" style="border-top-left-radius: 15px">ID</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Quota</th>
                     <th scope="col">Quota Maximum</th>

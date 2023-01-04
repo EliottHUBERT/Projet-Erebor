@@ -28,7 +28,7 @@
                         <div class="btn-group">
                             <button class="btn btn-success" onclick="location.href='/listeFichiers/{{$espace->id}}'"><img src="../../../../Images/open.svg"></button>
                             <button class="btn btn-primary" onclick="location.href='/listeDossiers'"><img src="../../../../Images/settings.svg"></button>
-                            <button class="btn btn-secondary"><img src="../../../../Images/user.svg"></button>
+                            <button class="btn btn-secondary" onclick="location.href='/detailDossier/{{$espace->id}}'"><img src="../../../../Images/user.svg"></button>
                             <button class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
                         </div>
                     </td>

@@ -7,6 +7,7 @@
                 <tr>
                     <th scope="col" style='border-top-left-radius: 15px'>IdUser</th>
                     <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -14,10 +15,19 @@
                 <tr>
                     <th scope="row">{{ $acces->user->login}}</th>
                     <td>{{ $acces->role }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-primary"><img src="../../../../Images/settings.svg"></button>
+                        </div>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        <div class="text-center">
+            <button class="btn btn-success" style="min-width:10%" onclick="location.href='/addAcces'"><img src="../../../../Images/download.svg" style="width: 25%"></button>
+            <button class="btn btn-secondary" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
+        </div>
     </div>
     </body>
 </html>

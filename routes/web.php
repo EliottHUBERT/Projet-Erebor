@@ -39,3 +39,6 @@ Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController
 
 //___ACCES___
 Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
+Route::get('/addAcces', function () {
+    return view('addAcces');
+});

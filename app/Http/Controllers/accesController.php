@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Acces;
 
 class accesController extends Controller
@@ -16,7 +17,7 @@ class accesController extends Controller
  */
 public function showAccessFromUser($idUser,$idEspace){
 
-    $fichiers = DB::table('fichier')
+    $lesAcces = DB::table('acces')
                 ->where('idUser', '=', $idUser)
                 ->andWhere('idEspace', '=', $idEspace)
                 ->get();
@@ -32,7 +33,7 @@ public function showAccessFromUser($idUser,$idEspace){
  */
 public function showAccessByEspace($idEspace){
 
-    $fichiers = DB::table('fichier')
+    $lesAcces = DB::table('acces')
                 ->Where('idEspace', '=', $idEspace)
                 ->get();
     return view('detailDossier',['lesAcces'=>$lesAcces]);
@@ -45,9 +46,9 @@ public function showAccessByEspace($idEspace){
  *
  * @param idUser the id of the space where the file is located
  */
-public function showAccessByUser($idEspace){
+public function showAccessByUser($idUser){
 
-    $fichiers = DB::table('fichier')
+    $lesAcces = DB::table('acces')
                 ->Where('idUser', '=', $idUser)
                 ->get();
     return view('detailDossier',['lesAcces'=>$lesAcces]);

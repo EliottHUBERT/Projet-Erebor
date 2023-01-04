@@ -24,5 +24,14 @@ Route::get('/header', function () {
 //Route::get('/listeDossiers', function () {
 //    return view('afficheDossiers');
 //});
+
+//___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
+
+
+//___FICHIERS___
 Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
+
+
+//___ACCES___
+Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");

@@ -13,4 +13,11 @@ class Acces extends Model
     protected $table = 'acces';
     protected $primaryKey = 'idUser';
     public $timestamps = false;
+
+
+    public function user()
+    {    
+        return $this->hasOne(User::class, 'id', 'idUser');
+    }
+
 }

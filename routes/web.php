@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/header', function () {
@@ -24,6 +24,10 @@ Route::get('/header', function () {
 //Route::get('/listeDossiers', function () {
 //    return view('afficheDossiers');
 //});
+
+//___LOGIN___
+Route::post('/logincomf',[\App\Http\Controllers\AuthController::class, "login"]);
+
 
 //___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);

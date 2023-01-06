@@ -9,20 +9,13 @@ use Illuminate\Support\Facades\DB;
 class espaceController extends Controller
 {
 
+    public function delete(Request $request){
+      $espace =  Espace::find(Request(key :"idEspace"));
+      return view('deleteDossier',['espace'=>$espace]);
+    }
+
     public function showAll(){
         $espaces =  Espace::all();
-
-        $idEspaces = DB::table('espace')
-                    ->select('espace.id')
-                    ->get();
-
- //       foreach($idEspaces as $id){
- //           $comptages = DB::table('fichier')
-   //                     ->select('* as ',$id)
-     //                   ->where('fichier.idEspace','=',$id)
-       //                 ->get();
-
-        //}
         return view('afficheDossiers',['espaces'=>$espaces]);
 
     }
@@ -38,9 +31,10 @@ class espaceController extends Controller
       return view('validationAddDossier',['espace'=>$espace]);
   }
 
-  public function delete($id){
-    $espace =  Espace::find($id);
+  public function do_delete(Request $request){
+    $espace =  Espace::find(Request(key :"id"));
     $espace->delete();
+    return view('validationDeleteDossier',['espace'=>$espace]);
   }
 
 }

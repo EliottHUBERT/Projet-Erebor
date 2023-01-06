@@ -6,7 +6,7 @@
         <form action="/editDossier" method="POST" class="form-example">
             @method('PUT')
             @csrf
-            
+
             <input type="text" value="{{$espace->id}}" name="id" hidden>
 
             <div class="form-group mx-sm-3 mb-2">
@@ -20,8 +20,8 @@
             </div>
 
             <div class="text-center">
-                <button class="btn btn-success mx-sm-3 mb-2"  type="submit" style="min-width:10%"><img src="../../../../Images/download.svg" style="width: 25%"></button>
-                
+                <button class="btn btn-success mx-sm-3 mb-2"  type="submit" style="min-width:10%"><img src="../../../../Images/validate.svg" style="width: 25%"></button>
+
             </div>
         </form>
     </div>

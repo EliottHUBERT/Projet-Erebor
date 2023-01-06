@@ -47,7 +47,7 @@
                         @endif
                      </div>
                      <button type="submit" class="btn btn-black">S'inscrire</button>
-                     <button type="button" onclick="location.href='/registration'" class="btn btn-secondary">Inscription</button>
+                     <button type="button" onclick="location.href='/login'" class="btn btn-secondary">Retour</button>
                   </form>
                </div>
             </div>

@@ -1,7 +1,7 @@
 @include('header')
     <body>
         @include('panel')
-        <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 100%; border-radius: 15px;">
+        <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 85%; border-radius: 15px;">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -10,7 +10,7 @@
                     <th scope="col">Quota</th>
                     <th scope="col">Quota Maximum</th>
                     <th scope="col">Nb Fichiers</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" style="border-top-right-radius: 15px">Actions</th>
                 </tr>
             </thead>
             <tbody>

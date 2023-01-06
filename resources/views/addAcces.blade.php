@@ -1,7 +1,7 @@
 @include('header')
 <body>
     @include('panel')
-    <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 100%; border-radius: 15px;">
+    <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 85%; border-radius: 15px;">
 
     <form action="" method="POST" class="form-example">
         @method('PUT')
@@ -9,7 +9,7 @@
 
         <div class="form-example">
             <label for="name">Utilisateur : </label>
-            <input type="text" name="name" id="name" placeholder="Nom..." class="typeahead" required>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Nom..." class="typeahead" required>
         </div>
 
         <div class="form-example">

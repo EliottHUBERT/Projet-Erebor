@@ -1,11 +1,11 @@
 @include('header')
 <body>
     @include('panel')
-    <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 100%; border-radius: 15px;">
-        
-        <br>  
-        <br>  
-        
+    <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 85%; border-radius: 15px;">
+
+        <br>
+        <br>
+
         <div class="alert alert-danger mx-sm-3" role="alert">
                 Vous êtes sur le point de supprimé le dossier "{{$espace->nom}}" qui a {{$espace->nbFiles}} fichier(s) !
         </div>

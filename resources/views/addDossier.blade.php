@@ -14,11 +14,11 @@
 
         <div class="form-group mx-sm-3 mb-5">
             <label for="email">Quota Max : </label>
-            <input type="number" id="quota" name="quota" min="10" placeholder="Nombre de mo... " required>
+            <input type="number" id="quota" name="quota" min="10" max="1000000000" placeholder="Nombre de mo... " required>
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success mx-sm-3 mb-2"  type="submit" style="min-width:10%"><img src="../../../../Images/download.svg" style="width: 25%"></button>
+            <button class="btn btn-success mx-sm-3 mb-2"  type="submit" style="min-width:10%"><img src="../../../../Images/addfolder.svg" style="width: 25%"></button>
         </div>
 
     </form>

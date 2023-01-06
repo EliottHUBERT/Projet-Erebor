@@ -16,7 +16,7 @@
 
             <div class="form-group mx-sm-3 mb-5">
                 <label for="email">Quota Max : </label>
-                <input class="form-control" type="number" id="quota" name="quota" min="10" placeholder="Nombre de mo..." value="{{$espace->quotaMax}}" required>
+                <input class="form-control" type="number" id="quota" name="quota" min="10" max="1000000000" placeholder="Nombre de mo..." value="{{$espace->quotaMax}}" required>
             </div>
 
             <div class="text-center">

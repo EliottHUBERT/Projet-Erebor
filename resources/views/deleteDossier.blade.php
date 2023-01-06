@@ -3,8 +3,10 @@
     @include('panel')
     <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 100%; border-radius: 15px;">
         
-
-        <div class="alert alert-danger" role="alert">
+        <br>  
+        <br>  
+        
+        <div class="alert alert-danger mx-sm-3" role="alert">
                 Vous êtes sur le point de supprimé le dossier "{{$espace->nom}}" qui a {{$espace->nbFiles}} fichier(s) !
         </div>
 
@@ -14,12 +16,12 @@
 
             <input type="text" value="{{$espace->id}}" name="id" hidden>
 
-            <button type="submit" class="btn btn-danger">Supprimer</button>
+            <button type="submit" class="btn btn-danger mx-sm-3 mb-2">Supprimer</button>
 
         </form>
 
         <div class="text-center">
-            <button class="btn btn-secondary" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
+            <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
         </div>
 
     </div>

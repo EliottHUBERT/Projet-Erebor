@@ -43,10 +43,15 @@ Route::controller(SampleController::class)->group(function(){
 
 //___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
+
 Route::get('/addDossier', function () { return view('addDossier'); });
 Route::put('/addDossier',[\App\Http\Controllers\espaceController::class,"add"]);
+
 Route::get('/delDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"delete"])->where("idEspace", "[0-9]+");
 Route::delete('/delDossier/valider',[\App\Http\Controllers\espaceController::class,"do_delete"]);
+
+Route::get('/editDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
+Route::put('/editDossier',[\App\Http\Controllers\espaceController::class,"do_update"]);
 
 
 //___FICHIERS___

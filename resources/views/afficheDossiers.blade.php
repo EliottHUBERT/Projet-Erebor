@@ -24,7 +24,7 @@
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-success" onclick="location.href='/listeFichiers/{{$espace->id}}'"><img src="../../../../Images/open.svg"></button>
-                            <button class="btn btn-primary" onclick="location.href='/listeDossiers'"><img src="../../../../Images/settings.svg"></button>
+                            <button class="btn btn-primary" onclick="location.href='/editDossier/{{$espace->id}}'"><img src="../../../../Images/settings.svg"></button>
                             <button class="btn btn-secondary" onclick="location.href='/detailDossier/{{$espace->id}}'"><img src="../../../../Images/user.svg"></button>
                             <button class="btn btn-danger" onclick="location.href='/delDossier/{{$espace->id}}'"><img src="../../../../Images/trash.svg"></button>
                         </div>
@@ -34,7 +34,7 @@
             </tbody>
         </table>
         <div class="text-center">
-            <button class="btn btn-success" style="min-width:10%" onclick="location.href='/addDossier'"><img src="../../../../Images/download.svg" style="width: 25%"></button>
+            <button class="btn btn-success mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/addDossier'"><img src="../../../../Images/download.svg" style="width: 25%"></button>
         </div>
     </div>
     </body>

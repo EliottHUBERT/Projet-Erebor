@@ -7,19 +7,18 @@
         @method('PUT')
         @csrf
         
-        <div class="form-example">
+        <div class="form-group mx-sm-3 mb-2">
             <label for="name">Nom : </label>
             <input type="text" name="nom" id="nom" placeholder="Nom..." required>
         </div>
 
-        <div class="form-example">
+        <div class="form-group mx-sm-3 mb-5">
             <label for="email">Quota Max : </label>
-            <input type="number" id="quota" name="quota" min="10" placeholder="Nombre de mo...">
+            <input type="number" id="quota" name="quota" min="10" placeholder="Nombre de mo... " required>
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success"  type="submit" style="min-width:10%"><img src="../../../../Images/download.svg" style="width: 25%"></button>
-            <button class="btn btn-secondary" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
+            <button class="btn btn-success mx-sm-3 mb-2"  type="submit" style="min-width:10%"><img src="../../../../Images/download.svg" style="width: 25%"></button>
         </div>
 
     </form>

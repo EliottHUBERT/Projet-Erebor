@@ -7,7 +7,7 @@
     <br>  
     
     <div class="alert alert-success mx-sm-3" role="alert">
-    Le dossier "{{$espace->nom}}" à bien quitter la montagne !
+    Le dossier "{{$espace->nom}}" a bien quitté la montagne !
     </div>
         <div class="text-center">
             <button class="btn btn-secondary mb-2" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>

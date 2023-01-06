@@ -7,7 +7,7 @@
     <br>  
 
     <div class="alert alert-success mx-sm-3" role="alert">
-    Le dossier "{{$espace->nom}}" à bien été modifié !
+    Le dossier "{{$espace->nom}}" a bien été modifié !
     </div>
         
         <div class="text-center">

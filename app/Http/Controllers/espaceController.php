@@ -27,4 +27,20 @@ class espaceController extends Controller
 
     }
 
+  public function add(Request $request){
+      $espace = new Espace;
+      $espace->nom = Request(key :"nom");
+      $espace->quota = 0;
+      $espace->quotaMax = Request(key :"quota");
+      $espace->nbFiles = 0;
+
+      $espace->save();
+      return view('validationAddDossier',['espace'=>$espace]);
+  }
+
+  public function delete($id){
+    $espace =  Espace::find($id);
+    $espace->delete();
+  }
+
 }

@@ -31,6 +31,8 @@ Route::post('/logincomf',[\App\Http\Controllers\AuthController::class, "login"])
 
 //___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
+Route::get('/addDossier', function () { return view('addDossier'); });
+Route::put('/addDossier',[\App\Http\Controllers\espaceController::class,"add"]);
 
 
 //___FICHIERS___
@@ -39,6 +41,4 @@ Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController
 
 //___ACCES___
 Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
-Route::get('/addAcces', function () {
-    return view('addAcces');
-});
+Route::get('/addAcces', function () { return view('addAcces'); });

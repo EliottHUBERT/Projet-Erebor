@@ -33,6 +33,9 @@
             @endforeach
             </tbody>
         </table>
+        <div class="text-center">
+            <button class="btn btn-success" style="min-width:10%" onclick="location.href='/addDossier'"><img src="../../../../Images/download.svg" style="width: 25%"></button>
+        </div>
     </div>
     </body>
 </html>

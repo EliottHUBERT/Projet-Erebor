@@ -17,7 +17,7 @@ class accesController extends Controller
 public function showAccessByEspace($idEspace){
     $lesAcces = Acces::where('idEspace', '=', $idEspace)->paginate(10);
     return view('detailDossier',['lesAcces'=>$lesAcces]);
-            
+
     }
 
 
@@ -29,7 +29,7 @@ public function showAccessByEspace($idEspace){
  */
 public function showAccessByUser($idUser){
 
-    $lesAcces = Acces::where('idUser', '=', $idUser)->paginate(10);
+    $lesAcces = Acces::where('id', '=', $idUser)->paginate(10);
     return view('detailDossier',['lesAcces'=>$lesAcces]);
 
 }

@@ -13,7 +13,7 @@
             <tbody>
             @foreach ($lesAcces as $acces)
                 <tr>
-                    <th scope="row">{{ $acces->user->login}}</th>
+                    <th scope="row">{{ $acces->user->name}}</th>
                     <td>{{ $acces->role }}</td>
                     <td>
                         <div class="btn-group">

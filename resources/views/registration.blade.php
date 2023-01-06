@@ -23,16 +23,18 @@
          <div class="main">
             <div class="col-md-6 col-sm-12">
                <div class="login-form">
-                @if($message = Session::get('success'))
-                    <div class="alert alert-info">
-                        {{ $message}}
-                    </div>
-                @endif
-                  <form action="{{ route('sample.validate_login') }}" method="POST">
+                  <form action="{{ route('sample.validate_registration') }}" method="POST">
                      @csrf
                      <div class="form-group">
-                        <label>Adresse email:</label>
-                        <input type="text" class="form-control" name="email" placeholder="Adresse email">
+                        <label>Nom:</label>
+                        <input type="text" class="form-control" name="login" placeholder="Nom d'utilisateur">
+                        @if($errors->has('login'))
+                            <span class="help-block">{{ $errors->first('login') }}</span>
+                        @endif
+                     </div>
+                     <div class="form-group">
+                        <label>Email:</label>
+                        <input type="text" class="form-control" name="email" placeholder="Email">
                         @if($errors->has('email'))
                             <span class="help-block">{{ $errors->first('email') }}</span>
                         @endif
@@ -44,7 +46,7 @@
                             <span class="help-block">{{ $errors->first('password') }}</span>
                         @endif
                      </div>
-                     <button type="submit" class="btn btn-black">Connexion</button>
+                     <button type="submit" class="btn btn-black">S'inscrire</button>
                      <button type="button" onclick="location.href='/registration'" class="btn btn-secondary">Inscription</button>
                   </form>
                </div>

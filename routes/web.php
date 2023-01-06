@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SampleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +26,20 @@ Route::get('/header', function () {
 //});
 
 //___LOGIN___
-Route::post('/logincomf',[\App\Http\Controllers\AuthController::class, "login"]);
 
+Route::controller(SampleController::class)->group(function(){
+    Route::get('login', 'index')->name('login');
+
+    Route::get('registration', 'registration')->name('registration');
+
+    Route::get('logout', 'logout')->name('sample.logout');
+
+    Route::post('validate_registration', 'validate_registration')->name('sample.validate_registration');
+
+    Route::post('validate_login', 'validate_login')->name('sample.validate_login');
+
+    Route::get('dashboard', 'dashboard')->name('dashboard');
+});
 
 //___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);

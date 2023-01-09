@@ -1,14 +1,15 @@
 @include('header')
     <body>
-        <div class="border border-dark" style="margin-left: 15%;">
+    @include('panel')
+    <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-bottom: 0%; margin-left: 15%; width: 85%; border-radius: 15px;">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col" style="border-top-left-radius: 15px">ID</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Taille</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" style="border-top-right-radius: 15px">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,9 @@
                 <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
                 <br>
             </div>
+            <ul class="pagination justify-content-center mb-0">
+            {{$fichiers->links("pagination::bootstrap-4")}}
+            </ul>
         </div>
     </body>
 </html>

@@ -1,7 +1,7 @@
 @include('header')
     <body>
         @include('panel')
-        <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 85%; border-radius: 15px;">
+        <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-bottom: 0%; margin-left: 15%; width: 85%; border-radius: 15px;">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -34,8 +34,15 @@
             </tbody>
         </table>
         <div class="text-center">
+    
             <button class="btn btn-success mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/addDossier'"><img src="../../../../Images/addfolder.svg" style="width: 25%"></button>
+
+            <ul class="pagination justify-content-center mb-0">
+            {{$espaces->links("pagination::bootstrap-4")}}
+            </ul>
+
         </div>
+    
     </div>
     </body>
 </html>

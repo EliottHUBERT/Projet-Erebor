@@ -19,7 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('users/{name}', function ($name) {
-    $users = User::where('login', 'like', '%'.$name)->paginate(1);
-    return $users->toJson();
-});
+Route::get('users/{name}',[\App\Http\Controllers\apiController::class,"getUsers"]);

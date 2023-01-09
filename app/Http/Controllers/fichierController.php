@@ -19,10 +19,7 @@ class fichierController extends Controller
  * @param idEspace the id of the space where the file is located
  */
     public function showAll($idEspace){
-
-        $fichiers = DB::table('fichier')
-                    ->where('idEspace', '=', $idEspace)
-                    ->get();
+        $fichiers =  Fichier::where('idEspace', '=', $idEspace)->paginate(9);                 
         return view('afficheFichiers',['fichiers'=>$fichiers]);
 
     }

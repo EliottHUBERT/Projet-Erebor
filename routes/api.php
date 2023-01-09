@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('users/',[\App\Http\Controllers\apiController::class,"getAll"]);
+
 Route::get('users/{name}',[\App\Http\Controllers\apiController::class,"getUsers"]);

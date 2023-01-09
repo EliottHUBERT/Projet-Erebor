@@ -8,8 +8,9 @@ use App\Models\DemandeEspace;
 class DemandeEspaceController extends Controller
 {
     public function add(Request $request){
+        $user = $request->user();
         $espace = new DemandeEspace;
-        $espace->demandeur = Request(key :"demandeur");
+        $espace->demandeur = $user->name;
         $espace->nom = Request(key :"nom");
         $espace->quotaMax = Request(key :"quota");
 

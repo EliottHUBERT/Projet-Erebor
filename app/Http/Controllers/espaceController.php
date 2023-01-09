@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Espace;
-use Illuminate\Support\Facades\DB;
+use App\Models\Acces;
 
 class espaceController extends Controller
 {
@@ -51,9 +51,17 @@ class espaceController extends Controller
       $espace->nom = Request(key :"nom");
       $espace->quota = 0;
       $espace->quotaMax = Request(key :"quota");
-      $espace->nbFiles = 0;
+      $espace->nbFiles = 0; 
+
+      $acces = new Acces;
+      $acces->idUser = Request(key :"demandeur")->id;
+      $acces->idEspace = $espace->id;
+      $acces->role = "Gestionnaire";
 
       $espace->save();
+      $acces->save();
+
+
       return view('validationAddDossier',['espace'=>$espace]);
   }
 

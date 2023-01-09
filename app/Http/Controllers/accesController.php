@@ -62,5 +62,20 @@ public function do_delete(Request $request){
 return view('validationDeleteAcces',['acces'=>$acces]);
 }
 
+  /**
+ * It creates the acces in the database with the data passed in the
+ * function
+ *
+ * @param request the data of the folder
+ */
+public function add($user, $espace, $role){
+    $acces = new Acces;
+    $acces->idUser = $user;
+    $acces->idEspace = $espace;
+    $acces->role = $role;
+
+    $acces->save();
+    return view('validationAddDossier',['espace'=>$espace]);
+}
 
 }

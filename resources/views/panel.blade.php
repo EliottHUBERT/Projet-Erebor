@@ -1,6 +1,6 @@
 <div style="background-color: #3d3d3d; height: calc(100vh - 3.5rem); max-width: 15%; border-top-right-radius: 15px;">
         <div>
-            <p style="color: white">Utilisateur connecté: {{Auth::user()->name}} </p>
+            <p style="color: white">Utilisateur connecté: <b>{{Auth::user()->name}}</b> </p>
         </div>
         <div class="text-center" style="margin-bottom: 2%">
             <button type="button" class="btn btn-secondary" onclick="location.href='/listeDossiers'">Mes dossiers<img src="../../../../Images/folder.svg" style=""></button>

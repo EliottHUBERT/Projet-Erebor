@@ -60,4 +60,8 @@ Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController
 
 //___ACCES___
 Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
+
 Route::get('/addAcces', function () { return view('addAcces'); });
+
+Route::get('/delAcces/{idUser}/{idEspace}', [\App\Http\Controllers\accesController::class,"delete"]);
+Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);

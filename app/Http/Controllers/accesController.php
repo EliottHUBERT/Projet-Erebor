@@ -34,4 +34,33 @@ public function showAccessByUser($idUser){
 
 }
 
+/**
+ * It gets the acces from the database that have the same idEspace as the one passed in the
+ * function and the same idUser as the one passed in the function
+ *
+ * @param request the id of the user and of the folder
+ */
+public function delete(Request $request){
+    $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
+        ->where('idEspace', '=', Request(key :"idEspace"))
+        ->first();
+    return view('deleteAcces',['acces'=>$acces]);
+    }
+    
+
+/**
+ * It gets the acces from the database that have the same idEspace as the one passed in the
+ * function and the same idUser as the one passed in the function
+ *
+ * @param request the id of the user and of the folder
+ */
+public function do_delete(Request $request){
+    $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
+    ->where('idEspace', '=', Request(key :"idEspace"))
+    ->first();
+    $acces->delete();
+return view('validationDeleteAcces',['acces'=>$acces]);
+}
+
+
 }

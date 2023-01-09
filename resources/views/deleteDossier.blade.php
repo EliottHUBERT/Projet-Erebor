@@ -7,7 +7,7 @@
         <br>
 
         <div class="alert alert-danger mx-sm-3" role="alert">
-                Vous êtes sur le point de supprimé le dossier "{{$espace->nom}}" qui a {{$espace->nbFiles}} fichier(s) !
+                Vous êtes sur le point de supprimer le dossier "{{$espace->nom}}" qui a {{$espace->nbFiles}} fichier(s) !
         </div>
 
         <form action="/delDossier/valider" method="POST" class="form-example">

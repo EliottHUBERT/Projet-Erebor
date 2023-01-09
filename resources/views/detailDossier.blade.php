@@ -18,6 +18,7 @@
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-primary"><img src="../../../../Images/settings.svg"></button>
+                            <button class="btn btn-danger" onclick="location.href='/delAcces/{{$acces->idUser}}/{{$acces->idEspace}}'"><img src="../../../../Images/trash.svg"></button>
                         </div>
                     </td>
                 </tr>

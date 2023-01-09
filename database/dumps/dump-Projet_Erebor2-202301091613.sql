@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.5.16-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: Projet_Erebor
+-- Host: localhost    Database: Erebor
 -- ------------------------------------------------------
 -- Server version	10.5.16-MariaDB
 
@@ -109,7 +109,7 @@ CREATE TABLE `espace` (
   `quotaMax` float NOT NULL,
   `nbFiles` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `espace` (
 
 LOCK TABLES `espace` WRITE;
 /*!40000 ALTER TABLE `espace` DISABLE KEYS */;
-INSERT INTO `espace` VALUES (1,'Data',0,1000,0),(2,'Trash',0,1000,0),(3,'Game',0,500000,0),(4,'Dwarf',3000,3000,3000),(5,'Smaug',100,500,2),(6,'mon espace cloud',0,100000,0),(10,'testsss',0,10,0),(11,'pif',0,10000,0),(12,'sq',0,10,0);
+INSERT INTO `espace` VALUES (1,'Data',0,1000,0),(2,'Trash',0,1000,0),(3,'Game',0,500000,0),(4,'Dwarf',3000,3000,3000),(5,'Smaug',100,500,2),(6,'mon espace cloud',0,100000,0),(10,'Alexandre',0,10,0),(11,'Nathan',0,10000,0),(12,'Malik',0,10,0),(13,'Images',0,1000,0),(14,'Musiques',0,100000,0),(15,'Trésor',0,999,0),(16,'DossierPaginate',0,11,0),(17,'CeluiDeTrop',0,69001,0),(18,'Thierry',0,566,0),(19,'Gaston',0,789,0),(20,'Math',0,1000,0),(21,'Francais',0,100000,0),(22,'Anglais',0,999,0),(23,'SLAM',0,11,0),(24,'SISR',0,69001,0),(25,'Droit',0,566,0),(26,'Management',0,789,0);
 /*!40000 ALTER TABLE `espace` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,6 +286,31 @@ LOCK TABLES `personal_access_tokens` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Thorin','motdepasse'),(2,'Kili','motdepasse'),(3,'Fili','motdepasse'),(4,'Bombur','motdepasse'),(5,'Balin','motdepasse'),(6,'Bombur','motdepasse'),(7,'Dwalin','motdepasse'),(8,'Bifur','motdepasse'),(9,'Bofur','motdepasse'),(10,'Ori','motdepasse'),(11,'Dori','motdepasse'),(12,'Nori','motdepasse');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -317,7 +342,7 @@ INSERT INTO `users` VALUES (1,'Bilbon','bilbon@gmail.com',NULL,'$2y$10$7vGX1T1Fy
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'Projet_Erebor'
+-- Dumping routines for database 'Erebor'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -329,4 +354,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-09 16:13:27
+-- Dump completed on 2023-01-09 16:22:16

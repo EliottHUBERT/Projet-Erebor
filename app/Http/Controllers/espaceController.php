@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Espace;
 use App\Models\Acces;
+use App\Models\DemandeEspace;
 
 class espaceController extends Controller
 {
@@ -47,19 +48,23 @@ class espaceController extends Controller
  * @param request the data of the folder
  */
   public function add(Request $request){
+
+      $demande =  DemandeEspace::find(Request(key :"id"));
       $espace = new Espace;
-      $espace->nom = Request(key :"nom");
+      $espace->nom = $demande->nom;
       $espace->quota = 0;
-      $espace->quotaMax = Request(key :"quota");
-      $espace->nbFiles = 0; 
+      $espace->quotaMax = $demande->quotaMax;
+      $espace->nbFiles = 0;
+      $espace->save();
 
       $acces = new Acces;
-      $acces->idUser = Request(key :"demandeur")->id;
+      $acces->idUser = $demande->user->id;
       $acces->idEspace = $espace->id;
       $acces->role = "Gestionnaire";
 
-      $espace->save();
+
       $acces->save();
+      $demande->delete();
 
 
       return view('validationAddDossier',['espace'=>$espace]);

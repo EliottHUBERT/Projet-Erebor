@@ -13,5 +13,8 @@ class DemandeEspace extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
-
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'demandeur');
+    }
 }

@@ -26,14 +26,30 @@
                                 @foreach ($demandesespace as $demande)
                                 <tr>
                                     <th scope="row">{{ $demande->id }}</th>
-                                    <td>{{ $demande->demandeur }}</td>
+                                    <td>{{ $demande->user->name }}</td>
                                     <td>{{ $demande->nom }}</td>
                                     <td>{{ $demande->quotaMax }}mo</td>
                                     <td>{{ $demande->date }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-success" onclick="location.href='/listeFichiers/'"><img src="../../../../Images/validate.svg"></button>
-                                            <button class="btn btn-danger" onclick="location.href='/editDossier/'"><img src="../../../../Images/cross.svg"></button>
+                                            <form action="/validateDemande" method="POST" class="form-example">
+                                                @method('PUT')
+                                                @csrf
+
+                                                <input type="text" value="{{$demande->id}}" name="id" hidden>
+
+                                                <button type="submit" class="btn btn-success mx-sm-3 mb-2"><img src="../../../../Images/validate.svg"></button>
+
+                                            </form>
+                                            <form action="/delDemande" method="POST" class="form-example">
+                                                @method('DELETE')
+                                                @csrf
+
+                                                <input type="text" value="{{$demande->id}}" name="id" hidden>
+
+                                                <button type="submit" class="btn btn-danger mx-sm-3 mb-2"><img src="../../../../Images/cross.svg"></button>
+
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -124,7 +140,7 @@
               </div>
 
         <div class="text-center">
-            <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/addDossier'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
+            <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
         </div>
     </div>
     </body>

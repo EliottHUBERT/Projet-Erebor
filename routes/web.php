@@ -44,6 +44,8 @@ Route::controller(SampleController::class)->group(function(){
 //___DEMANDES___
 
 Route::get('/demande',[\App\Http\Controllers\DemandeEspaceController::class,"showAll"]);
+Route::delete('/delDemande',[\App\Http\Controllers\DemandeEspaceController::class,"do_delete"]);
+Route::put('/validateDemande',[\App\Http\Controllers\espaceController::class,"add"]);
 
 //___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);

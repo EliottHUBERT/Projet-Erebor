@@ -16,7 +16,7 @@
             <label for="email">Quota Max : </label>
             <input type="number" class="form-control small" id="quota" name="quota" min="10" max="1000000000" placeholder="Nombre de mo... " required>
         </div>
-
+            <input type="text" value="{{Auth::user()->name}}" class="form-control small" id="demandeur" name="demandeur" hidden>
         <div class="text-center">
             <button class="btn btn-success mx-sm-3 mb-2"  type="submit" style="min-width:10%"><img src="../../../../Images/addfolder.svg" style="width: 25%"></button>
             <button class="btn btn-secondary mx-sm-3 mb-2" type="button" onclick="location.href='/listeDossiers'" style="min-width:10%"><img src="../../../../Images/return.svg" style="width: 25%"></button>

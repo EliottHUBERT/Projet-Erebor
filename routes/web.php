@@ -41,11 +41,15 @@ Route::controller(SampleController::class)->group(function(){
     Route::get('dashboard', 'dashboard')->name('dashboard');
 });
 
+//___DEMANDES___
+
+Route::get('/demande',[\App\Http\Controllers\DemandeEspaceController::class,"showAll"]);
+
 //___ESPACES___
 Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
 
 Route::get('/addDossier', function () { return view('addDossier'); });
-Route::put('/addDossier',[\App\Http\Controllers\espaceController::class,"add"]);
+Route::put('/addDossier',[\App\Http\Controllers\DemandeEspaceController::class,"add"]);
 
 Route::get('/delDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"delete"])->where("idEspace", "[0-9]+");
 Route::delete('/delDossier/valider',[\App\Http\Controllers\espaceController::class,"do_delete"]);

@@ -71,6 +71,7 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col" style="border-top-left-radius: 15px">ID</th>
+                                    <th scope="col">Espace</th>
                                     <th scope="col">Demandeur</th>
                                     <th scope="col">Ancien Nom</th>
                                     <th scope="col">Nouveau Nom</th>
@@ -81,63 +82,46 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($demandemodifespace as $demande)
                                 <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td>mo</td>
-                                    <td>mo</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <th scope="row">{{ $demande->id }}</th>
+                                    <td>{{ $demande->idEspace }}</td>
+                                    <td>{{ $demande->user->name }}</td>
+                                    <td>{{ $demande->Anciennom }}</td>
+                                    <td>{{ $demande->nom }}</td>
+                                    <td>{{ $demande->AncienquotaMax }}mo</td>
+                                    <td>{{ $demande->quotaMax }}mo</td>
+                                    <td>{{ $demande->date }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-success" onclick="location.href='/listeFichiers/'"><img src="../../../../Images/validate.svg"></button>
-                                            <button class="btn btn-danger" onclick="location.href='/delDossier/'"><img src="../../../../Images/cross.svg"></button>
+                                            <form action="/validateDemandeModif" method="POST" class="form-example">
+                                                @method('PUT')
+                                                @csrf
+
+                                                <input type="text" value="{{$demande->id}}" name="id" hidden>
+                                                <input type="text" value="{{$demande->idEspace}}" name="idEspace" hidden>
+
+                                                <button type="submit" class="btn btn-success mx-sm-3 mb-2"><img src="../../../../Images/validate.svg"></button>
+
+                                            </form>
+                                            <form action="/delDemandeModif" method="POST" class="form-example">
+                                                @method('DELETE')
+                                                @csrf
+
+                                                <input type="text" value="{{$demande->id}}" name="id" hidden>
+
+                                                <button type="submit" class="btn btn-danger mx-sm-3 mb-2"><img src="../../../../Images/cross.svg"></button>
+
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Demande de création de comptes
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col" style="border-top-left-radius: 15px">ID</th>
-                                    <th scope="col">Nom d'utilisateur</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col" style="border-top-right-radius: 15px">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td>mo</td>
-                                    <td></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button class="btn btn-success" onclick="location.href='/listeFichiers/'"><img src="../../../../Images/validate.svg"></button>
-                                            <button class="btn btn-danger" onclick="location.href='/delDossier/'"><img src="../../../../Images/cross.svg"></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
         <div class="text-center">
             <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>

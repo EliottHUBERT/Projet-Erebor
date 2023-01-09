@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DemandeEspace;
+use App\Models\DemandeModifEspace;
 use App\Models\User;
 
 class DemandeEspaceController extends Controller
@@ -28,7 +29,8 @@ class DemandeEspaceController extends Controller
 
       public function showAll(){
         $demandesespace =  DemandeEspace::all();
-        return view('listedemandes',['demandesespace'=>$demandesespace]);
+        $demandemodifespace = DemandeModifespace::all();
+        return view('listedemandes',['demandesespace'=>$demandesespace,'demandemodifespace'=>$demandemodifespace]);
 
     }
 }

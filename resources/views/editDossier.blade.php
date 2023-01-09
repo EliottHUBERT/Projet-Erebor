@@ -7,8 +7,6 @@
             @method('PUT')
             @csrf
 
-            <input type="text" value="{{$espace->id}}" name="id" hidden>
-
             <div class="form-group mx-sm-3 mb-2">
                 <label for="name">Nom : </label>
                 <input class="form-control" type="text" name="nom" id="nom" placeholder="Nom..." value="{{$espace->nom}}" required>
@@ -18,7 +16,9 @@
                 <label for="email">Quota Max : </label>
                 <input class="form-control" type="number" id="quota" name="quota" min="10" max="1000000000" placeholder="Nombre de mo..." value="{{$espace->quotaMax}}" required>
             </div>
-
+            <input class="form-control" type="int" name="idEspace" id="idEspace" value="{{$espace->id}}" hidden>
+            <input class="form-control" type="text" name="Anciennom" id="Anciennom" value="{{$espace->nom}}" hidden>
+            <input class="form-control" type="text" name="Ancienquota" id="Ancienquota" value="{{$espace->quotaMax}}" hidden>
             <div class="mx-sm-3 mb-5">
 
             <label for="stockage">Stockage :</label>

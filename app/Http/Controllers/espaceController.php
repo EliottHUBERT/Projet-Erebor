@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Espace;
 use App\Models\Acces;
 use App\Models\DemandeEspace;
+use App\Models\DemandeModifEspace;
 
 class espaceController extends Controller
 {
@@ -91,13 +92,15 @@ class espaceController extends Controller
  * @param request the data of the folder
  */
   public function do_update(Request $request){
-      $espace =  Espace::find(Request(key :"id"));
-      $espace->nom = Request(key :"nom");
-      $espace->quota = 0;
-      $espace->quotaMax = Request(key :"quota");
-      $espace->nbFiles = 0;
+      $demande =  DemandeModifEspace::find(Request(key :"id"));
+      $espace =  Espace::find(Request(key :"idEspace"));
+      $espace->nom = $demande->nom;
+      $espace->quota = $espace->quota;
+      $espace->quotaMax = $demande->quotaMax;
+      $espace->nbFiles = $espace->nbFiles;
 
       $espace->save();
+      $demande->delete();
       return view('validationEditDossier',['espace'=>$espace]);
   }
 

@@ -36,7 +36,7 @@ class espaceController extends Controller
    *
    */
     public function showAll(){
-        return view('afficheDossiers',['espaces'=>Espace::paginate(9)]);
+        return view('afficheDossiers',['espaces'=>Espace::paginate(10)]);
 
     }
 

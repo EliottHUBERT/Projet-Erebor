@@ -14,9 +14,16 @@
                 <input class="form-control" type="text" name="nom" id="nom" placeholder="Nom..." value="{{$espace->nom}}" required>
             </div>
 
-            <div class="form-group mx-sm-3 mb-5">
+            <div class="form-group mx-sm-3 mb-3">
                 <label for="email">Quota Max : </label>
                 <input class="form-control" type="number" id="quota" name="quota" min="10" max="1000000000" placeholder="Nombre de mo..." value="{{$espace->quotaMax}}" required>
+            </div>
+
+            <div class="mx-sm-3 mb-5">
+
+            <label for="stockage">Stockage :</label>
+            <meter id="stockage" value="{{$espace->quota}}" min="0" max="{{$espace->quotaMax}}">2 out of 10</meter>
+
             </div>
 
             <div class="text-center">

@@ -1,4 +1,5 @@
 @include('header')
+
     <body>
         @include('panel')
         <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-bottom: 0%; margin-left: 15%; width: 85%; border-radius: 15px;">
@@ -18,8 +19,8 @@
                 <tr>
                     <th scope="row">{{ $espace->id }}</th>
                     <td>{{ $espace->nom }}</td>
-                    <td>{{ $espace->quota }}mo</td>
-                    <td>{{ $espace->quotaMax }}mo</td>
+                    <td class='quota'>{{ $espace->quota }}mo</td>
+                    <td class='quotaMax'>{{ $espace->quotaMax }}mo</td>
                     <td>{{ $espace->nbFiles }}</td>
                     <td>
                         <div class="btn-group">
@@ -45,4 +46,26 @@
 
     </div>
     </body>
+    <script>
+ 
+ function Go(ClassName) {
+    myCells = document.getElementsByClassName(ClassName);
+    console.log(myCells);
+      
+    for (let i = 0; i < myCells.length; i++){
+        
+        var value = myCells[i].innerHTML;
+        value = parseInt(value.substr(0, value.length-2));
+        
+        if(value>=1024){
+
+                value = (value/1024).toFixed(2);
+                myCells[i].innerHTML = value+"Go"
+            }       
+    } 
+}
+ Go("quota");
+ Go("quotaMax");
+
+</script>
 </html>

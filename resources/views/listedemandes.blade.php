@@ -3,9 +3,9 @@
         @include('panel')
         <div class="border border-dark" style="position: absolute; top: 3.5rem; margin-left: 15%; width: 85%; border-radius: 15px;">
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="accordion-item" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                  <h2 class="accordion-header" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" id="headingOne">
+                    <button class="accordion-button" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       Demandes d'espaces
                     </button>
                   </h2>

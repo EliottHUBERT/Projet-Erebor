@@ -41,36 +41,40 @@ Route::controller(SampleController::class)->group(function(){
     Route::get('dashboard', 'dashboard')->name('dashboard');
 });
 
-//___DEMANDES___
+Route::group(['middleware' => ['auth']], function() {
 
-Route::get('/demande',[\App\Http\Controllers\DemandeEspaceController::class,"showAll"]);
-Route::delete('/delDemande',[\App\Http\Controllers\DemandeEspaceController::class,"do_delete"]);
-Route::put('/validateDemande',[\App\Http\Controllers\espaceController::class,"add"]);
+    //___DEMANDES___
 
-Route::delete('/delDemandeModif',[\App\Http\Controllers\DemandeModifEspaceController::class,"do_delete"]);
-Route::put('/validateDemandeModif',[\App\Http\Controllers\espaceController::class,"do_update"]);
+    Route::get('/demande',[\App\Http\Controllers\DemandeEspaceController::class,"showAll"]);
+    Route::delete('/delDemande',[\App\Http\Controllers\DemandeEspaceController::class,"do_delete"]);
+    Route::put('/validateDemande',[\App\Http\Controllers\espaceController::class,"add"]);
 
-//___ESPACES___
-Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
+    Route::delete('/delDemandeModif',[\App\Http\Controllers\DemandeModifEspaceController::class,"do_delete"]);
+    Route::put('/validateDemandeModif',[\App\Http\Controllers\espaceController::class,"do_update"]);
 
-Route::get('/addDossier', function () { return view('addDossier'); });
-Route::put('/addDossier',[\App\Http\Controllers\DemandeEspaceController::class,"add"]);
+    //___ESPACES___
 
-Route::get('/delDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"delete"])->where("idEspace", "[0-9]+");
-Route::delete('/delDossier/valider',[\App\Http\Controllers\espaceController::class,"do_delete"]);
+    Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
 
-Route::get('/editDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
-Route::put('/editDossier',[\App\Http\Controllers\DemandeModifEspaceController::class,"add"]);
+    Route::get('/addDossier', function () { return view('addDossier'); });
+    Route::put('/addDossier',[\App\Http\Controllers\DemandeEspaceController::class,"add"]);
+
+    Route::get('/delDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"delete"])->where("idEspace", "[0-9]+");
+    Route::delete('/delDossier/valider',[\App\Http\Controllers\espaceController::class,"do_delete"]);
+
+    Route::get('/editDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
+    Route::put('/editDossier',[\App\Http\Controllers\DemandeModifEspaceController::class,"add"]);
+
+    //___FICHIERS___
+    Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
 
 
-//___FICHIERS___
-Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
+    //___ACCES___
+    Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
 
+    Route::get('/addAcces', function () { return view('addAcces'); });
 
-//___ACCES___
-Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
+    Route::get('/delAcces/{idUser}/{idEspace}', [\App\Http\Controllers\accesController::class,"delete"]);
+    Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);
 
-Route::get('/addAcces', function () { return view('addAcces'); });
-
-Route::get('/delAcces/{idUser}/{idEspace}', [\App\Http\Controllers\accesController::class,"delete"]);
-Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);
+});

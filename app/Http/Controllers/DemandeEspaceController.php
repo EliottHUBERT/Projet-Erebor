@@ -18,7 +18,7 @@ class DemandeEspaceController extends Controller
 
 
         $espace->save();
-        return redirect()->intended('listeDossiers');
+        return view('validationDemandeAddDossier',['espace'=>$espace]);
     }
 
     public function do_delete(Request $request){

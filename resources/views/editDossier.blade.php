@@ -21,9 +21,10 @@
             <input class="form-control" type="text" name="Ancienquota" id="Ancienquota" value="{{$espace->quotaMax}}" hidden>
             <div class="mx-sm-3 mb-5">
 
-            <label for="stockage">Stockage :</label>
-            <meter id="stockage" value="{{$espace->quota}}" min="0" max="{{$espace->quotaMax}}">2 out of 10</meter>
-
+                <label for="stockage">Stockage :</label>
+                <div class="progress" style="width: 20%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{($espace->quota / $espace->quotaMax)*100}}%;" aria-valuenow="{{$espace->quota}}" aria-valuemin="0" aria-valuemax="{{$espace->quotaMax}}">{{($espace->quota / $espace->quotaMax)*100}}%</div>
+                </div>
             </div>
 
             <div class="text-center">

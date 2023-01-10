@@ -62,6 +62,14 @@ class SampleController extends Controller
         return redirect('login')->with('success', "Vous n'etes pas autoriser a acceder à ceci");
     }
 
+    function checkConnection(){
+        if(Auth::check()){
+        }
+
+        return redirect('login')->with('success', "Vous n'etes pas autoriser a acceder à ceci");
+    }
+
+
     function logout(){
         Session::flush();
 

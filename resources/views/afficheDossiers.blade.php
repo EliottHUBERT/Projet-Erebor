@@ -19,8 +19,8 @@
                 <tr>
                     <th scope="row">{{ $espace->id }}</th>
                     <td>{{ $espace->nom }}</td>
-                    <td class='quota'>{{ $espace->quota }}mo</td>
-                    <td class='quotaMax'>{{ $espace->quotaMax }}mo</td>
+                    <td class='quota'>{{ $espace->quota }} Mo</td>
+                    <td class='quotaMax'>{{ $espace->quotaMax }} Mo</td>
                     <td>{{ $espace->nbFiles }}</td>
                     <td>
                         <div class="btn-group">
@@ -60,7 +60,7 @@
         if(value>=1024){
 
                 value = (value/1024).toFixed(2);
-                myCells[i].innerHTML = value+"Go"
+                myCells[i].innerHTML = value+" Go"
             }       
     } 
 }

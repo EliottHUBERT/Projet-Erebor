@@ -90,6 +90,8 @@ class SampleController extends Controller
      */
     function access(){
         if(Auth::check()){
+            if(Auth::user()->hasRole('admin')){
+                return redirect('listeDossiersAdmin');}
             return redirect('listeDossiers');
         }
 

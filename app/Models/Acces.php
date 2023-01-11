@@ -22,7 +22,7 @@ class Acces extends Model
 
     public function espace()
     {    
-        return $this->hasOne(User::class, 'id', 'idEspace');
+        return $this->hasOne(Espace::class, 'id', 'idEspace');
     }
 
 }

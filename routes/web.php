@@ -54,7 +54,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     //___ESPACES___
 
-    Route::get('/listeDossiers',[\App\Http\Controllers\espaceController::class,"showAll"]);
+    Route::get('/listeDossiersAdmin',[\App\Http\Controllers\espaceController::class,"showAll"]);
+
+    Route::get('/listeDossiers',[\App\Http\Controllers\accesController::class,"showAccessByUser"]);
 
     Route::get('/addDossier', function () { return view('addDossier'); });
     Route::put('/addDossier',[\App\Http\Controllers\DemandeEspaceController::class,"add"]);

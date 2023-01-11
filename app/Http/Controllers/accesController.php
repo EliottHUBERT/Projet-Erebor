@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Acces;
+use Illuminate\Support\Facades\Auth;
 
 class accesController extends Controller
 {
@@ -27,10 +28,10 @@ public function showAccessByEspace($idEspace){
  *
  * @param idUser the id of the space where the file is located
  */
-public function showAccessByUser($idUser){
+public function showAccessByUser(){
 
-    $lesAcces = Acces::where('id', '=', $idUser)->paginate(10);
-    return view('detailDossier',['lesAcces'=>$lesAcces]);
+    $lesAcces = Acces::where('idUser', '=', Auth::user()->id)->paginate(10);
+    return view('afficheDossiers',['espaces'=>$lesAcces]);
 
 }
 

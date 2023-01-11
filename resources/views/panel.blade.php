@@ -10,6 +10,9 @@
             <button type="button" class="btn btn-secondary" onclick="location.href='/demande'">Mes demandes<img src="../../../../Images/demand.svg" style=""><span class="badge text-bg-danger">{{Auth::user()->id}}</span></button>
         </div>
         <div class="text-center" style="margin-bottom: 2%">
+            <button type="button" class="btn btn-secondary" onclick="location.href='/listeDossiersAdmin'">Tous les espaces<img src="../../../../Images/folder.svg" style=""></span></button>
+        </div>
+        <div class="text-center" style="margin-bottom: 2%">
             <button type="button" class="btn btn-secondary" onclick="location.href='/historique'">Historique<img src="../../../../Images/log.svg" style=""></button>
         </div>
         @endif

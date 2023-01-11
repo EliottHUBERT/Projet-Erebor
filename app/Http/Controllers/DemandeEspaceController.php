@@ -15,6 +15,12 @@ class DemandeEspaceController extends Controller
      * @param Request request The request object.
      */
     public function add(Request $request){
+
+        $request->validate([
+            'nom' => 'required|alpha_num',
+            'quota' => 'required',
+        ]);
+
         $user = $request->user();
         $espace = new DemandeEspace;
         $espace->demandeur = $user->id;
@@ -32,6 +38,12 @@ class DemandeEspaceController extends Controller
      * @param Request request The request object.
      */
     public function do_delete(Request $request){
+
+        $request->validate([
+            'id' => 'required|integer',
+
+        ]);
+
         $espace =  DemandeEspace::find(Request(key :"id"));
         $espace->delete();
         return redirect()->intended('demande');

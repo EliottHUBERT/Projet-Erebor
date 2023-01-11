@@ -48,12 +48,12 @@ class SampleController extends Controller
         ]);
 
         $data = $request->all();
-        User::create([
+        $user = User::create([
             'name' => $data['login'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
-
+        $user->assignRole('user');
         return redirect('login')->with('success',"Votre demande d'inscription à été envoyer à un admninistrateur");
     }
 

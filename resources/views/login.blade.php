@@ -13,7 +13,7 @@
         <title>EreborCloud<?php echo str_replace("/", "|", $_SERVER['REQUEST_URI']); ?></title>
     </head>
     <body>
-        <div class="sidenav">
+        <div class="sidenav" style="background-color: rgb(102, 102, 102)">
             <div class="login-main-text">
                 <img src="../../../../Images/faviconwhite.svg" width="100" height="100" alt="">
                <h2>EreborCloud</h2>

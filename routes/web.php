@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/editDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
     Route::put('/editDossier',[\App\Http\Controllers\DemandeModifEspaceController::class,"add"]);
 
+    Route::get('/historique',[\App\Http\Controllers\historiqueController::class,"showall"]);
+
     //___FICHIERS___
     Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
 

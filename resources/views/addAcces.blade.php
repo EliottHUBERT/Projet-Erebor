@@ -19,6 +19,21 @@
 
         <div class="form-example">
             <label for="email">Droit : </label>
+            <div>
+                <input type="radio" id="lecture" name="acces" value="lecture"
+                       checked>
+                <label for="huey">Lecture</label>
+              </div>
+
+              <div>
+                <input type="radio" id="ecriture" name="acces" value="ecriture">
+                <label for="ecriture">Ecriture</label>
+              </div>
+
+              <div>
+                <input type="radio" id="gestionnaire" name="acces" value="gestionnaire">
+                <label for="gestionnaire">Gestionnaire</label>
+              </div>
         </div>
     </form>
 

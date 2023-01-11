@@ -28,7 +28,7 @@
                                     <th scope="row">{{ $demande->id }}</th>
                                     <td>{{ $demande->user->name }}</td>
                                     <td>{{ $demande->nom }}</td>
-                                    <td>{{ $demande->quotaMax }}mo</td>
+                                    <td class="quotaMax">{{ $demande->quotaMax }}mo</td>
                                     <td>{{ $demande->date }}</td>
                                     <td>
                                         <div class="btn-group">
@@ -89,8 +89,8 @@
                                     <td>{{ $demande->user->name }}</td>
                                     <td>{{ $demande->Anciennom }}</td>
                                     <td>{{ $demande->nom }}</td>
-                                    <td>{{ $demande->AncienquotaMax }}mo</td>
-                                    <td>{{ $demande->quotaMax }}mo</td>
+                                    <td class="quotaMax">{{ $demande->AncienquotaMax }}mo</td>
+                                    <td class="quotaMax">{{ $demande->quotaMax }}mo</td>
                                     <td>{{ $demande->date }}</td>
                                     <td>
                                         <div class="btn-group">
@@ -128,4 +128,25 @@
         </div>
     </div>
     </body>
+    <script>
+
+        function Go(ClassName) {
+           myCells = document.getElementsByClassName(ClassName);
+           console.log(myCells);
+
+           for (let i = 0; i < myCells.length; i++){
+
+               var value = myCells[i].innerHTML;
+               value = parseInt(value.substr(0, value.length-2));
+
+               if(value>=1024){
+
+                       value = (value/1024).toFixed(2);
+                       myCells[i].innerHTML = value+" Go"
+                   }
+           }
+        }
+        Go("quotaMax");
+
+       </script>
 </html>

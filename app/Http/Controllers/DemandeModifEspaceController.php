@@ -8,6 +8,12 @@ use App\Models\User;
 
 class DemandeModifEspaceController extends Controller
 {
+    /**
+     * It takes a request, gets the user, creates a new demande, sets the demande's attributes, and
+     * saves it
+     *
+     * @param Request request The request object.
+     */
     public function add(Request $request){
         $user = $request->user();
         $demande = new DemandeModifEspace;
@@ -23,12 +29,21 @@ class DemandeModifEspaceController extends Controller
         return view('validationEditDossier',['espace'=>$demande]);
     }
 
+    /**
+     * It delete a specific demand of the database using the id in parameter
+     *
+     * @param Request request The request object.
+     */
     public function do_delete(Request $request){
         $espace =  DemandeModifEspace::find(Request(key :"id"));
         $espace->delete();
         return redirect()->intended('demande');
       }
 
+
+      /**
+       * It gets all the modification demand from the database
+       */
       public function showAll(){
         $demandesespace =  DemandeModifEspace::all();
         return view('listedemandes',['demandesespace'=>$demandesespace]);

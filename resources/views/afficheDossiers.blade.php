@@ -47,22 +47,22 @@
     </div>
     </body>
     <script>
- 
+
  function Go(ClassName) {
     myCells = document.getElementsByClassName(ClassName);
     console.log(myCells);
-      
+
     for (let i = 0; i < myCells.length; i++){
-        
+
         var value = myCells[i].innerHTML;
         value = parseInt(value.substr(0, value.length-2));
-        
+
         if(value>=1024){
 
                 value = (value/1024).toFixed(2);
                 myCells[i].innerHTML = value+" Go"
-            }       
-    } 
+            }
+    }
 }
  Go("quota");
  Go("quotaMax");

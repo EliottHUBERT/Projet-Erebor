@@ -38,7 +38,7 @@ Route::controller(SampleController::class)->group(function(){
 
     Route::post('validate_login', 'validate_login')->name('sample.validate_login');
 
-    Route::get('dashboard', 'dashboard')->name('dashboard');
+    Route::get('access', 'access')->name('access');
 });
 
 Route::group(['middleware' => ['auth']], function() {

@@ -9,6 +9,11 @@ use App\Models\User;
 
 class DemandeEspaceController extends Controller
 {
+    /**
+     * It adds a new demande espace
+     *
+     * @param Request request The request object.
+     */
     public function add(Request $request){
         $user = $request->user();
         $espace = new DemandeEspace;
@@ -21,12 +26,20 @@ class DemandeEspaceController extends Controller
         return view('validationDemandeAddDossier',['espace'=>$espace]);
     }
 
+    /**
+     * It delete a specific demand of the database using the id in parameter
+     *
+     * @param Request request The request object.
+     */
     public function do_delete(Request $request){
         $espace =  DemandeEspace::find(Request(key :"id"));
         $espace->delete();
         return redirect()->intended('demande');
       }
 
+      /**
+       * It gets all the folder demand from the database
+       */
       public function showAll(){
         $demandesespace =  DemandeEspace::all();
         $demandemodifespace = DemandeModifespace::all();

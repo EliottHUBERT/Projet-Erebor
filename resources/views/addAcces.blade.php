@@ -35,6 +35,7 @@
                 <label for="gestionnaire">Gestionnaire</label>
               </div>
         </div>
+            <input type="hidden" name="idEspace" id="idEspace" value="{{$espace->idEspace}}">
     </form>
 
         <div class="text-center">

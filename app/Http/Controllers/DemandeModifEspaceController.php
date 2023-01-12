@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\DemandeModifEspace;
+use App\Models\DemandeEspace;
 use App\Models\User;
 
 class DemandeModifEspaceController extends Controller
@@ -26,6 +28,12 @@ class DemandeModifEspaceController extends Controller
 
 
         $demande->save();
+
+        $count = DemandeEspace::all()->count();
+        $count += DemandeModifEspace::all()->count();
+        Session::forget('countDemande');
+        Session::put('countDemande', htmlspecialchars($count));
+
         return view('validationEditDossier',['espace'=>$demande]);
     }
 
@@ -37,6 +45,11 @@ class DemandeModifEspaceController extends Controller
     public function do_delete(Request $request){
         $espace =  DemandeModifEspace::find(Request(key :"id"));
         $espace->delete();
+        $count = DemandeEspace::all()->count();
+        $count += DemandeModifEspace::all()->count();
+        Session::forget('countDemande');
+        Session::put('countDemande', htmlspecialchars($count));
+
         return redirect()->intended('demande');
       }
 

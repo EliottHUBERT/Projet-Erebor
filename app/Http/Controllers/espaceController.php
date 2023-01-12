@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Espace;
 use App\Models\Acces;
@@ -19,6 +20,8 @@ class espaceController extends Controller
    */
     public function delete(Request $request){
       $espace =  Espace::find(Request(key :"idEspace"));
+      $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
+      $acces->delete();
       return view('deleteDossier',['espace'=>$espace]);
     }
 
@@ -66,6 +69,11 @@ class espaceController extends Controller
 
       $acces->save();
       $demande->delete();
+
+      $count = DemandeEspace::all()->count();
+      $count += DemandeModifEspace::all()->count();
+      Session::forget('countDemande');
+      Session::put('countDemande', htmlspecialchars($count));
 
 
       return view('validationAddDossier',['espace'=>$espace]);

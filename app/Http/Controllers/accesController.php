@@ -47,7 +47,7 @@ public function delete(Request $request){
         ->first();
     return view('deleteAcces',['acces'=>$acces]);
     }
-    
+
 
 /**
  * It gets the acces from the database that have the same idEspace as the one passed in the
@@ -69,11 +69,11 @@ return view('validationDeleteAcces',['acces'=>$acces]);
  *
  * @param request the data of the folder
  */
-public function add($user, $espace, $role){
+public function add(Request $request){
     $acces = new Acces;
-    $acces->idUser = $user;
-    $acces->idEspace = $espace;
-    $acces->role = $role;
+    $acces->idUser = $request->idUser;
+    $acces->idEspace = $request->idEspace;
+    $acces->role = $request->role;
 
     $acces->save();
     return view('validationAddDossier',['espace'=>$espace]);

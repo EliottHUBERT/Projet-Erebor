@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Hash;
-use Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\DemandeEspace;
+use App\Models\DemandeModifEspace;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -91,6 +93,10 @@ class SampleController extends Controller
     function access(){
         if(Auth::check()){
             if(Auth::user()->hasRole('admin')){
+                $count = DemandeEspace::all()->count();
+                $count += DemandeModifEspace::all()->count();
+                Session::forget('countDemande');
+                Session::put('countDemande', htmlspecialchars($count));
                 return redirect('listeDossiersAdmin');}
             return redirect('listeDossiers');
         }

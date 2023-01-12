@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\DemandeEspace;
 use App\Models\DemandeModifEspace;
@@ -29,6 +30,11 @@ class DemandeEspaceController extends Controller
 
 
         $espace->save();
+        $count = DemandeEspace::all()->count();
+        $count += DemandeModifEspace::all()->count();
+        Session::forget('countDemande');
+        Session::put('countDemande', htmlspecialchars($count));
+
         return view('validationDemandeAddDossier',['espace'=>$espace]);
     }
 
@@ -46,6 +52,11 @@ class DemandeEspaceController extends Controller
 
         $espace =  DemandeEspace::find(Request(key :"id"));
         $espace->delete();
+        $count = DemandeEspace::all()->count();
+        $count += DemandeModifEspace::all()->count();
+        Session::forget('countDemande');
+        Session::put('countDemande', htmlspecialchars($count));
+
         return redirect()->intended('demande');
       }
 

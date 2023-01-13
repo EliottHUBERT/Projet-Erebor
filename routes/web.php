@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
     Route::post('/upload-file', [\App\Http\Controllers\fichierController::class, 'fileUpload'])->name('fileUpload');
 
+    Route::delete('/delFichier/{id}',[\App\Http\Controllers\fichierController::class,"do_delete"])->where("id", "[0-9]+");
+    Route::get('download/{nom}', [\App\Http\Controllers\fichierController::class, 'downloadFile']);
 
     //___ACCES___
     Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
@@ -74,8 +76,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     //___ADMIN___
 
-Route::group(['middleware' => ['auth', 'admin']], function() {
-    Route::get('/listeDossiersAdmin',[\App\Http\Controllers\espaceController::class,"showAll"]);
+    Route::group(['middleware' => ['auth', 'admin']], function() {
+        Route::get('/listeDossiersAdmin',[\App\Http\Controllers\espaceController::class,"showAll"]);
         Route::get('/historique',[\App\Http\Controllers\historiqueController::class,"showall"]);
 
         //___DEMANDES___
@@ -87,5 +89,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
         Route::delete('/delDemandeModif',[\App\Http\Controllers\DemandeModifEspaceController::class,"do_delete"]);
         Route::put('/validateDemandeModif',[\App\Http\Controllers\espaceController::class,"do_update"]);
 
-});
+    });
+
 });

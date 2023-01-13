@@ -9,6 +9,7 @@ use App\Models\Espace;
 use App\Models\Acces;
 use App\Models\DemandeEspace;
 use App\Models\DemandeModifEspace;
+use Illuminate\Support\Facades\Storage;
 
 class espaceController extends Controller
 {
@@ -91,6 +92,7 @@ class espaceController extends Controller
   public function do_delete(Request $request){
     $espace =  Espace::find(Request(key :"id"));
     $espace->delete();
+    //Storage::deleteDirectory('app/public/'.Request(key :"id"));
     return view('validationDeleteDossier',['espace'=>$espace]);
   }
 

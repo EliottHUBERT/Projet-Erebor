@@ -22,8 +22,17 @@
                         <td>
                             <div>
                                 <div class="btn-group">
-                                    <button class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
-                                    <button class="btn btn-success"><img src="../../../../Images/download.svg"></button>
+                                    <form action="/delFichier/{{ $fichier->id }}" method="post" enctype="multipart/form-data">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
+                                    </form>
+                                    <form action="/download/{{ $fichier->nom }}" method="get" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="idEspace" id="idEspace" value="{{$idEspace}}" hidden>
+                                    <input type="text" name="nom" id="nom" value="{{$fichier->nom}}" hidden>
+                                    <button type="submit" class="btn btn-success"><img src="../../../../Images/download.svg"></button>
+                                    </form>
                                 </div>
                             </div>
                         </td>

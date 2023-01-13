@@ -9,7 +9,7 @@
                     <th scope="col" style="border-top-left-radius: 15px">ID</th>
                     <th scope="col">Type</th>
                     <th scope="col">Date</th>
-                    <th scope="col" style="border-top-right-radius: 15px">Effectuer par</th>
+                    <th scope="col" style="border-top-right-radius: 15px">INFO</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,7 @@
                     <th scope="row">{{ $log->id }}</th>
                     <td>{{ $log->type }}</td>
                     <td>{{ $log->date }}</td>
-                    <td>{{ $log->user->name }}</td>
+                    <td>{{ $log->info }}</td>
                 </tr>
             @endforeach
             </tbody>

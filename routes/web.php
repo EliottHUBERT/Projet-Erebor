@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     //___FICHIERS___
     Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
+    Route::post('/upload-file', [\App\Http\Controllers\fichierController::class, 'fileUpload'])->name('fileUpload');
 
 
     //___ACCES___

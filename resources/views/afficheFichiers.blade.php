@@ -33,7 +33,7 @@
                 </tbody>
             </table>
 
-            <div class="text-center">
+    <div class="text-center"> 
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" style="min-width: 10%" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <img src="../../../../Images/addfolder.svg" style="width: 25%">
@@ -48,11 +48,34 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-
+                        <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                            <div class="custom-file">
+                                <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                                <input type="text" name="idEspace" id="idEspace" value="{{$idEspace}}" hidden>
+                                <label class="custom-file-label" for="chooseFile">Fichier choisie</label>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
+                                Envoyer
+                            </button>
+                        </form>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
                         </div>
                     </div>
                     </div>

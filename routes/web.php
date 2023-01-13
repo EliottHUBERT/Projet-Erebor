@@ -89,6 +89,10 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('/delDemandeModif',[\App\Http\Controllers\DemandeModifEspaceController::class,"do_delete"]);
         Route::put('/validateDemandeModif',[\App\Http\Controllers\espaceController::class,"do_update"]);
 
-    });
+});
 
+    //___REDIRECT_IF_NOT_FOUND___
+    Route::any('{url}', function(){
+        return redirect('/listeDossiers');
+    })->where('url', '.*');
 });

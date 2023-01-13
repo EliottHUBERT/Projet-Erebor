@@ -37,7 +37,7 @@ class AdminMiddleware
     {
         if (Auth::user()->hasrole("user")) {
 
-            abort(403, 'Unauthorized action.');
+            return redirect()->intended('listeDossiers');
         }
 
         return $next($request);

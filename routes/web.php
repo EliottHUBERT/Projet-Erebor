@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SampleController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,19 +44,8 @@ Route::controller(SampleController::class)->group(function(){
 
 Route::group(['middleware' => ['auth']], function() {
 
-    //___DEMANDES___
-
-    Route::get('/demande',[\App\Http\Controllers\DemandeEspaceController::class,"showAll"]);
-    Route::delete('/delDemande',[\App\Http\Controllers\DemandeEspaceController::class,"do_delete"]);
-    Route::put('/validateDemande',[\App\Http\Controllers\espaceController::class,"add"]);
-
-    Route::delete('/delDemandeModif',[\App\Http\Controllers\DemandeModifEspaceController::class,"do_delete"]);
-    Route::put('/validateDemandeModif',[\App\Http\Controllers\espaceController::class,"do_update"]);
 
     //___ESPACES___
-
-    Route::get('/listeDossiersAdmin',[\App\Http\Controllers\espaceController::class,"showAll"]);
-
     Route::get('/listeDossiers',[\App\Http\Controllers\accesController::class,"showAccessByUser"]);
 
     Route::get('/addDossier', function () { return view('addDossier'); });
@@ -67,7 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/editDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
     Route::put('/editDossier',[\App\Http\Controllers\DemandeModifEspaceController::class,"add"]);
 
-    Route::get('/historique',[\App\Http\Controllers\historiqueController::class,"showall"]);
+
 
     //___FICHIERS___
     Route::get("/listeFichiers/{idEspace}", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
@@ -82,4 +72,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/delAcces/{idUser}/{idEspace}', [\App\Http\Controllers\accesController::class,"delete"]);
     Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);
 
+    //___ADMIN___
+
+Route::group(['middleware' => ['auth', 'admin']], function() {
+    Route::get('/listeDossiersAdmin',[\App\Http\Controllers\espaceController::class,"showAll"]);
+        Route::get('/historique',[\App\Http\Controllers\historiqueController::class,"showall"]);
+
+        //___DEMANDES___
+
+        Route::get('/demande',[\App\Http\Controllers\DemandeEspaceController::class,"showAll"]);
+        Route::delete('/delDemande',[\App\Http\Controllers\DemandeEspaceController::class,"do_delete"]);
+        Route::put('/validateDemande',[\App\Http\Controllers\espaceController::class,"add"]);
+
+        Route::delete('/delDemandeModif',[\App\Http\Controllers\DemandeModifEspaceController::class,"do_delete"]);
+        Route::put('/validateDemandeModif',[\App\Http\Controllers\espaceController::class,"do_update"]);
+
+});
 });

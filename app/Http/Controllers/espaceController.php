@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Models\Fichier;
 use App\Models\Espace;
 use App\Models\Acces;
 use App\Models\DemandeEspace;
@@ -21,6 +22,7 @@ class espaceController extends Controller
     public function delete(Request $request){
       $espace =  Espace::find(Request(key :"idEspace"));
       $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
+      $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
       $acces->delete();
       return view('deleteDossier',['espace'=>$espace]);
     }

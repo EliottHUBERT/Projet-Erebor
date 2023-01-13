@@ -32,8 +32,32 @@
                 @endforeach
                 </tbody>
             </table>
+
             <div class="text-center">
-            <button class="btn btn-success mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/addDossier'"><img src="../../../../Images/addfolder.svg" style="width: 25%"></button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" style="min-width: 10%" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <img src="../../../../Images/addfolder.svg" style="width: 25%">
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajout de fichier</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
                 <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
                 <br>
             </div>
@@ -43,22 +67,22 @@
         </div>
     </body>
     <script>
- 
+
  function Go(ClassName) {
     myCells = document.getElementsByClassName(ClassName);
     console.log(myCells);
-      
+
     for (let i = 0; i < myCells.length; i++){
-        
+
         var value = myCells[i].innerHTML;
         value = parseInt(value.substr(0, value.length-2));
-        
+
         if(value>=1024){
 
                 value = (value/1024).toFixed(2);
                 myCells[i].innerHTML = value+" Go"
-            }       
-    } 
+            }
+    }
 }
  Go("size");
 

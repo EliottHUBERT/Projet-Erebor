@@ -28,6 +28,9 @@
         <div class="text-center">
             <button class="btn btn-success mb-2" style="min-width:10%" onclick="location.href='/addAcces'"><img src="../../../../Images/adduser.svg" style="width: 25%"></button>
             <button class="btn btn-secondary mb-2" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
+            <ul class="pagination justify-content-center mb-0">
+                {{$lesAcces->links("pagination::bootstrap-4")}}
+            </ul>
         </div>
     </div>
     </body>

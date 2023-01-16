@@ -6,6 +6,7 @@ use App\Models\Fichier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\File; 
 
 
 class fichierController extends Controller
@@ -59,9 +60,14 @@ class fichierController extends Controller
  * @param request the id of the file
  */
   public function do_delete(Request $request){
+    
+    $path = "public/".Request(key :"idEspace")."/".Request(key :"nom");
+
     $file =  Fichier::find(Request(key :"id"));
     $file->delete();
-    //Storage::deleteFiles("/".Request(key :"id"));
+    
+    Storage::delete($path);
+    
     return back();
   }
 }

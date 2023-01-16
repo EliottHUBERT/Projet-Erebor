@@ -24,10 +24,11 @@ class fichierController extends Controller
     }
 
     function downloadFile(Request $request){
-      $file = Storage::disk('local')->get("/".Request(key :"idEspace")."/".Request(key :"nom"));
+      
+      $path = storage_path("app/public/".Request(key :"idEspace")."/".Request(key :"nom"));
+      $fileName = Request(key :"nom");
 
-      return (new Response($file, 200))
-            ->header('Content-Type', 'image/jpeg');
+      return Response::download($path, $fileName, ['Content-Type: application/sql']);
   }
 
     public function fileUpload(Request $req){

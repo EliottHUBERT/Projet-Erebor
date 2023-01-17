@@ -69,4 +69,19 @@ class fichierController extends Controller
     
     return back();
   }
+
+
+      /**
+ * It deletes the file in the database that have the same id as the one passed in the
+ * function
+ *
+ * @param request the id of the file
+ */
+public static function countFiles(int $id){
+
+  $number =  Fichier::where("idEspace","=",$id)->count();
+
+  return $number;
+}
+
 }

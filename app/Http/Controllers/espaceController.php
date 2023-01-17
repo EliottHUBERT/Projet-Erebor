@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Fichier;
+use App\Http\Controllers\fichierController;
 use App\Models\Espace;
 use App\Models\Acces;
 use App\Models\DemandeEspace;
@@ -44,7 +45,11 @@ class espaceController extends Controller
    *
    */
     public function showAll(){
-        return view('afficheDossiersAdmin',['espaces'=>Espace::paginate(10)]);
+        $espaces = Espace::paginate(10);
+        foreach($espaces as $espace){
+          $espace->nbFiles = fichierController::countFiles($espace->id);
+        }
+        return view('afficheDossiersAdmin',['espaces'=>$espaces]);
 
     }
 

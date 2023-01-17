@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Acces;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\fichierController;
 
 class accesController extends Controller
 {
@@ -31,6 +32,9 @@ public function showAccessByEspace($idEspace){
 public function showAccessByUser(){
 
     $lesAcces = Acces::where('idUser', '=', Auth::user()->id)->paginate(10);
+    foreach($lesAcces as $acces){
+        $acces->espace->nbFiles = fichierController::countFiles($acces->espace->id);
+      }
     return view('afficheDossiers',['espaces'=>$lesAcces]);
 
 }

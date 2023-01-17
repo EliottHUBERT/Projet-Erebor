@@ -90,9 +90,12 @@ class espaceController extends Controller
  * @param request the id of the folder
  */
   public function do_delete(Request $request){
+    $path = "public/".Request(key :"id");
+
     $espace =  Espace::find(Request(key :"id"));
     $espace->delete();
-    //Storage::deleteDirectory('app/public/'.Request(key :"id"));
+
+    Storage::deleteDirectory($path);
     return view('validationDeleteDossier',['espace'=>$espace]);
   }
 

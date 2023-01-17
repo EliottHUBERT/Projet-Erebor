@@ -45,10 +45,10 @@
                 </tbody>
             </table>
 
-    <div class="text-center"> 
+    <div class="text-center">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" style="min-width: 10%" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    <img src="../../../../Images/addfolder.svg" style="width: 25%">
+                    <img src="../../../../Images/add-File.svg" style="width: 25%">
                 </button>
 
                 <!-- Modal -->
@@ -101,25 +101,10 @@
             </ul>
         </div>
     </body>
+
+    @include('MoToReadable')
+
     <script>
-
- function Go(ClassName) {
-    myCells = document.getElementsByClassName(ClassName);
-    console.log(myCells);
-
-    for (let i = 0; i < myCells.length; i++){
-
-        var value = myCells[i].innerHTML;
-        value = parseInt(value.substr(0, value.length-2));
-
-        if(value>=1024){
-
-                value = (value/1024).toFixed(2);
-                myCells[i].innerHTML = value+" Go"
-            }
-    }
-}
- Go("size");
-
-</script>
+        Go("size");
+    </script>
 </html>

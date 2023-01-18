@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fichier;
+use App\Models\Espace;
+use App\Http\Controllers\espaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
@@ -37,7 +39,15 @@ class fichierController extends Controller
         'file' => 'required'
         ]);
 
+        $espace = espaceController::find(Request(key: 'idEspace'));
+        $quotamax = $espace->quotaMax;
+        $espacesize = fichierController::countFileSize(Request(key: 'idEspace'));
         $fileModel = new Fichier;
+
+        if((($req->file('file')->getSize())/1000000)+ $espacesize > $quotamax) {
+            return back()
+            ->with('Error', 'La montagne est pleine et ne peux pas accueillir votre fichier');
+        }
 
         if($req->file()) {
             $fileName = $req->file->getClientOriginalName();

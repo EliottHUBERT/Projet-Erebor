@@ -41,7 +41,7 @@ class espaceController extends Controller
     }
 
      /**
-   * It gets all the folders from the database
+   * It gets all the folders from the database for Admins
    *
    */
     public function showAll(){
@@ -52,6 +52,11 @@ class espaceController extends Controller
         }
         return view('afficheDossiersAdmin',['espaces'=>$espaces]);
 
+    }
+
+    public static function find(){
+        $espace =  Espace::find(Request(key :"idEspace"));
+        return $espace;
     }
 
   /**

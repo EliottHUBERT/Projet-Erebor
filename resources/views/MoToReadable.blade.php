@@ -21,6 +21,10 @@ function Go(ClassName) {
                 myCells[i].innerHTML = value+" octets"
             }
             }
+            else{
+                value = value.toFixed(2);
+                myCells[i].innerHTML = value+" Mo"
+            }
 
 
     }

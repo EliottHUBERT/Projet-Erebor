@@ -67,6 +67,11 @@
                                 <strong>{{ $message }}</strong>
                             </div>
                         @endif
+                        @if ($message = Session::get('Error'))
+                            <div class="alert alert-danger">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>

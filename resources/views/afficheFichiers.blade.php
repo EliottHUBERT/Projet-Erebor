@@ -47,7 +47,7 @@
 
     <div class="text-center">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" style="min-width: 10%" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary" style="min-width: 10%; margin-bottom: 0.5%" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <img src="../../../../Images/add-File.svg" style="width: 25%">
                 </button>
 

@@ -26,7 +26,7 @@ class apiController extends Controller
      * @return The first user with the name that matches the name passed in.
      */
     public function getUsers($name){
-        $users = User::where('name', 'like', '%'.$name)->first();
+        $users = User::where('name', 'like', $name.'%')->get();
         return Response()->json($users);
     }
 }

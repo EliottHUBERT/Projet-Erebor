@@ -48,6 +48,7 @@ class espaceController extends Controller
         $espaces = Espace::paginate(10);
         foreach($espaces as $espace){
           $espace->nbFiles = fichierController::countFiles($espace->id);
+          $espace->quota = fichierController::countFileSize($espace->id);
         }
         return view('afficheDossiersAdmin',['espaces'=>$espaces]);
 

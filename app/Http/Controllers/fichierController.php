@@ -24,7 +24,7 @@ class fichierController extends Controller
     }
 
     function downloadFile(Request $request){
-      
+
       $path = storage_path("app/public/".Request(key :"idEspace")."/".Request(key :"nom"));
       $fileName = Request(key :"nom");
 
@@ -59,14 +59,14 @@ class fichierController extends Controller
  * @param request the id of the file
  */
   public function do_delete(Request $request){
-    
+
     $path = "public/".Request(key :"idEspace")."/".Request(key :"nom");
 
     $file =  Fichier::find(Request(key :"id"));
     $file->delete();
-    
+
     Storage::delete($path);
-    
+
     return back();
   }
 
@@ -83,5 +83,12 @@ public static function countFiles(int $id){
 
   return $number;
 }
+
+public static function countFileSize(int $id){
+
+    $size = Fichier::where("idEspace","=",$id)->sum('taille');
+
+    return $size;
+  }
 
 }

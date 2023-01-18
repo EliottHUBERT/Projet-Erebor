@@ -25,9 +25,11 @@
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-success" onclick="location.href='/listeFichiers/{{$espace->espace->id}}'"><img src="../../../../Images/open.svg"></button>
+                            @if($espace->role=="Gestionnaire")
                             <button class="btn btn-primary" onclick="location.href='/editDossier/{{$espace->espace->id}}'"><img src="../../../../Images/settings.svg"></button>
                             <button class="btn btn-secondary" onclick="location.href='/detailDossier/{{$espace->espace->id}}'"><img src="../../../../Images/user.svg"></button>
                             <button class="btn btn-danger" onclick="location.href='/delDossier/{{$espace->espace->id}}'"><img src="../../../../Images/trash.svg"></button>
+                            @endif
                         </div>
                     </td>
                 </tr>

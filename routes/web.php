@@ -71,7 +71,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/addAcces', function () { return view('addAcces'); });
 
-    Route::get('/delAcces/{idUser}/{idEspace}', [\App\Http\Controllers\accesController::class,"delete"]);
+    
+    Route::post('/editAcces', [\App\Http\Controllers\accesController::class,"update"]);
+    Route::put('/editAcces/valider', [\App\Http\Controllers\accesController::class,"do_update"]);
     Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);
 
     //___ADMIN___

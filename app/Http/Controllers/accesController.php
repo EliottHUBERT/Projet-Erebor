@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Acces;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\fichierController;
@@ -51,9 +50,23 @@ public function do_delete(Request $request){
     ->where('idEspace', '=', Request(key :"idEspace"))
     ->first();
     $acces->delete();
-return view('validationDeleteAcces',['acces'=>$acces]);
+return back();
 }
 
+/**
+ * It gets the acces from the database that have the same idEspace as the one passed in the
+ * function and the same idUser as the one passed in the function
+ *
+ * @param Request request The request object.
+ *
+ * @return The view editAcces.blade.php is being returned.
+ */
+public function update(Request $request){
+    $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
+    ->where('idEspace', '=', Request(key :"idEspace"))
+    ->first();
+return view('editAcces',['acces'=>$acces]);
+}
 
 
 /**
@@ -62,16 +75,13 @@ return view('validationDeleteAcces',['acces'=>$acces]);
  *
  * @param Request request The request object.
  *
- * @return The view validationDeleteAcces.blade.php is being returned.
+ * @return The view detailDossier.blade.php is being returned.
  */
 public function do_update(Request $request){
-    $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
-    ->where('idEspace', '=', Request(key :"idEspace"))
-    ->first();
-
-    $acces->role = $request->role;
+    $acces =  Acces::find(Request(key :"idUser"))->where('idEspace', '=', Request(key :"idEspace"))->first();
+    $acces->role = Request(key :"role");
     $acces->save();
-return view('validationDeleteAcces',['acces'=>$acces]);
+return back();
 }
 
   /**

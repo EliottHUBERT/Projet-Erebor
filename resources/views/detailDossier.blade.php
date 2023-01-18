@@ -13,12 +13,31 @@
             <tbody>
             @foreach ($lesAcces as $acces)
                 <tr>
-                    <th scope="row">{{ $acces->user->name}}</th>
+                    <th scope="row">{{$acces->user->name}}</th>
                     <td>{{ $acces->role }}</td>
                     <td>
                         <div class="btn-group">
-                            <button class="btn btn-primary"><img src="../../../../Images/settings.svg"></button>
-                            <button class="btn btn-danger" onclick="location.href='/delAcces/{{$acces->idUser}}/{{$acces->idEspace}}'"><img src="../../../../Images/trash.svg"></button>
+                        <form action="/editAcces" method="POST" class="form-example">
+                                @csrf
+
+                                <input type="text" value="{{$acces->idUser}}" name="idUser" hidden>
+                                <input type="text" value="{{$acces->idEspace}}" name="idEspace" hidden>
+
+                                <button type='submit' class="btn btn-primary"><img src="../../../../Images/settings.svg"></button>
+
+                            </form>
+                            
+                            <form action="/delAcces/valider" method="POST" class="form-example">
+                                @method('DELETE')
+                                @csrf
+
+                                <input type="text" value="{{$acces->idUser}}" name="idUser" hidden>
+                                <input type="text" value="{{$acces->idEspace}}" name="idEspace" hidden>
+
+                                <button type="submit" class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
+
+                            </form>
+                            
                         </div>
                     </td>
                 </tr>

@@ -24,7 +24,13 @@
                     <td>{{ $espace->espace->nbFiles }}</td>
                     <td>
                         <div class="btn-group">
-                            <button class="btn btn-success" onclick="location.href='/listeFichiers/{{$espace->espace->id}}'"><img src="../../../../Images/open.svg"></button>
+                            <form action=/listeFichiers method="get">
+
+                                <input type="text" name="idEspace" id="idEspace" value="{{$espace->espace->id}}" hidden>
+                                <input type="text" name="role" id="role" value="{{$espace->role}}" hidden>
+                                <button type=submit class="btn btn-success"><img src="../../../../Images/open.svg"></button>
+
+                            </form>
                             @if($espace->role=="Gestionnaire")
                             <button class="btn btn-primary" onclick="location.href='/editDossier/{{$espace->espace->id}}'"><img src="../../../../Images/settings.svg"></button>
                             <button class="btn btn-secondary" onclick="location.href='/detailDossier/{{$espace->espace->id}}'"><img src="../../../../Images/user.svg"></button>

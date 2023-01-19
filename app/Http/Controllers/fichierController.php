@@ -19,9 +19,9 @@ class fichierController extends Controller
  *
  * @param idEspace the id of the space where the file is located
  */
-    public function showAll($idEspace){
-        $fichiers =  Fichier::where('idEspace', '=', $idEspace)->paginate(10);
-        return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>$idEspace]);
+    public function showAll(Request $request){
+        $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
+        return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>Request(key :"role")]);
 
     }
 

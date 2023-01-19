@@ -22,6 +22,7 @@
                         <td>
                             <div>
                                 <div class="btn-group">
+                                @if($role!="Lecture")
                                     <form action="/delFichier/{{ $fichier->id }}" method="post" enctype="multipart/form-data">
                                     @method('DELETE')
                                     @csrf
@@ -29,7 +30,7 @@
                                     <input type="text" name="nom" id="nom" value="{{$fichier->nom}}" hidden>
                                     <button type="submit" class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
                                     </form>
-
+                                @endif
                                     <form action="/download/{{ $fichier->nom }}" method="get" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="idEspace" id="idEspace" value="{{$idEspace}}" hidden>
@@ -46,11 +47,12 @@
             </table>
 
     <div class="text-center">
+                @if($role!="Lecture")
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" style="min-width: 10%; margin-bottom: 0.5%" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <img src="../../../../Images/add-File.svg" style="width: 25%">
                 </button>
-
+                @endif
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">

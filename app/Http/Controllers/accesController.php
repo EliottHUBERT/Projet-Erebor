@@ -78,9 +78,9 @@ return view('editAcces',['acces'=>$acces]);
  * @return The view detailDossier.blade.php is being returned.
  */
 public function do_update(Request $request){
-    $acces =  Acces::find(Request(key :"idUser"))->where('idEspace', '=', Request(key :"idEspace"))->first();
-    $acces->role = Request(key :"role");
-    $acces->save();
+    Acces::where('idUser', '=',Request(key :"idUser"))
+    ->where('idEspace', '=', Request(key :"idEspace"))
+    ->update(['role'=>Request(key :"role")]);
 return back();
 }
 

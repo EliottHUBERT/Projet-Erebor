@@ -17,6 +17,15 @@ class DemandeModifEspaceController extends Controller
      * @param Request request The request object.
      */
     public function add(Request $request){
+
+        $request->validate([
+            'idEspace' => 'required|integer',
+            'nom' =>'required|max:50',
+            'quota' =>'required|numeric',
+            'Anciennom' =>'required|max:50',
+            'Ancienquota' =>'required|numeric'
+        ]);
+
         $user = $request->user();
         $demande = new DemandeModifEspace;
         $demande->demandeur = $user->id;
@@ -43,6 +52,11 @@ class DemandeModifEspaceController extends Controller
      * @param Request request The request object.
      */
     public function do_delete(Request $request){
+
+        $request->validate([
+            'id' => 'required|integer',
+        ]);
+
         $espace =  DemandeModifEspace::find(Request(key :"id"));
         $espace->delete();
         $count = DemandeEspace::all()->count();

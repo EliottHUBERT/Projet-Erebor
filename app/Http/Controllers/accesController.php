@@ -46,6 +46,12 @@ public function showAccessByUser(){
  * @param request the id of the user and of the folder
  */
 public function do_delete(Request $request){
+
+    $request->validate([
+        'idUser' => 'required|integer',
+        'idEspace' =>'required|integer',
+    ]);
+
     $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
     ->where('idEspace', '=', Request(key :"idEspace"))
     ->first();
@@ -78,7 +84,17 @@ return view('editAcces',['acces'=>$acces]);
  * @return The view detailDossier.blade.php is being returned.
  */
 public function do_update(Request $request){
+<<<<<<< HEAD
     Acces::where('idUser', '=',Request(key :"idUser"))
+=======
+
+    $request->validate([
+        'idUser' => 'required|integer',
+        'idEspace' =>'required|integer',
+    ]);
+
+    $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
+>>>>>>> 5b93ae6 (filtrage)
     ->where('idEspace', '=', Request(key :"idEspace"))
     ->update(['role'=>Request(key :"role")]);
 return back();
@@ -91,6 +107,13 @@ return back();
  * @param request the data of the folder
  */
 public function add(Request $request){
+
+    $request->validate([
+        'idUser' => 'required|integer',
+        'idEspace' =>'required|integer',
+        'role' =>'required|max:50'
+    ]);
+
     $acces = new Acces;
     $acces->idUser = $request->idUser;
     $acces->idEspace = $request->idEspace;

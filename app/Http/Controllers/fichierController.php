@@ -27,6 +27,11 @@ class fichierController extends Controller
 
     function downloadFile(Request $request){
 
+        $request->validate([
+            'idEspace' => 'required|integer',
+            'nom' =>'required|max:50',
+        ]);
+
       $path = storage_path("app/public/".Request(key :"idEspace")."/".Request(key :"nom"));
       $fileName = Request(key :"nom");
 
@@ -36,7 +41,8 @@ class fichierController extends Controller
     public function fileUpload(Request $req){
 
         $req->validate([
-        'file' => 'required'
+        'idEspace'=> 'required|integer',
+        'file' => 'required|file'
         ]);
 
         $espace = espaceController::find(Request(key: 'idEspace'));
@@ -69,7 +75,11 @@ class fichierController extends Controller
  * @param request the id of the file
  */
   public function do_delete(Request $request){
-
+    $request->validate([
+        'idEspace' => 'required|integer',
+        'nom' => 'required|max:50',
+        'id' => 'required|integer'
+    ]);
     $path = "public/".Request(key :"idEspace")."/".Request(key :"nom");
 
     $file =  Fichier::find(Request(key :"id"));

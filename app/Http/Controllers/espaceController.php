@@ -22,6 +22,11 @@ class espaceController extends Controller
    * @param request the id of the folder
    */
     public function delete(Request $request){
+
+        $request->validate([
+            'idEspace' => 'required|integer'
+        ]);
+
       $espace =  Espace::find(Request(key :"idEspace"));
       $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
       $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
@@ -36,6 +41,11 @@ class espaceController extends Controller
    * @param request the id of the folder
    */
     public function update(Request $request){
+
+        $request->validate([
+            'idEspace' => 'required|integer'
+        ]);
+
       $espace =  Espace::find(Request(key :"idEspace"));
       return view('editDossier',['espace'=>$espace]);
     }
@@ -54,7 +64,12 @@ class espaceController extends Controller
 
     }
 
-    public static function find(){
+    public static function find(Request $request){
+
+        $request->validate([
+            'idEspace' => 'required|integer'
+        ]);
+
         $espace =  Espace::find(Request(key :"idEspace"));
         return $espace;
     }
@@ -66,6 +81,11 @@ class espaceController extends Controller
  * @param request the data of the folder
  */
   public function add(Request $request){
+
+    $request->validate([
+        'id' => 'required|integer',
+    ]);
+
 
       $demande =  DemandeEspace::find(Request(key :"id"));
       $espace = new Espace;
@@ -101,6 +121,11 @@ class espaceController extends Controller
  * @param request the id of the folder
  */
   public function do_delete(Request $request){
+
+    $request->validate([
+        'id' => 'required|integer',
+    ]);
+
     $path = "public/".Request(key :"id");
 
     $espace =  Espace::find(Request(key :"id"));
@@ -118,6 +143,12 @@ class espaceController extends Controller
  * @param request the data of the folder
  */
   public function do_update(Request $request){
+
+    $request->validate([
+        'id' => 'required|integer',
+        'idEspace' =>'required|integer',
+    ]);
+
       $demande =  DemandeModifEspace::find(Request(key :"id"));
       $espace =  Espace::find(Request(key :"idEspace"));
       $espace->nom = $demande->nom;

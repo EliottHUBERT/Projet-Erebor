@@ -45,7 +45,18 @@
                 @endforeach
                 </tbody>
             </table>
-
+            <div>
+            @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
+                        @if ($message = Session::get('Error'))
+                            <div class="alert alert-danger">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
+            </div>
     <div class="text-center">
                 @if($role!="Lecture")
                 <!-- Button trigger modal -->
@@ -64,25 +75,15 @@
                         <div class="modal-body">
                         <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-                        @if ($message = Session::get('Error'))
-                            <div class="alert alert-danger">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="custom-file">
                                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
                                 <input type="text" name="idEspace" id="idEspace" value="{{$idEspace}}" hidden>

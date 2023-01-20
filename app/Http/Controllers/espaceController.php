@@ -23,9 +23,6 @@ class espaceController extends Controller
    */
     public function delete(Request $request){
 
-        $request->validate([
-            'idEspace' => 'required|integer'
-        ]);
 
       $espace =  Espace::find(Request(key :"idEspace"));
       $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
@@ -42,9 +39,6 @@ class espaceController extends Controller
    */
     public function update(Request $request){
 
-        $request->validate([
-            'idEspace' => 'required'
-        ]);
 
       $espace =  Espace::find(Request(key :"idEspace"));
       return view('editDossier',['espace'=>$espace]);

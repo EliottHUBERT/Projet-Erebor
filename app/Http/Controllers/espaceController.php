@@ -60,10 +60,6 @@ class espaceController extends Controller
 
     public static function find(Request $request){
 
-        $request->validate([
-            'idEspace' => 'required|integer'
-        ]);
-
         $espace =  Espace::find(Request(key :"idEspace"));
         return $espace;
     }

@@ -26,7 +26,7 @@ class fichierController extends Controller
         $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
         $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
         if ($role){
-            return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role]);
+            return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role->role]);
         }
         return back()->with('Error','Vous ne passerez pas!');
 

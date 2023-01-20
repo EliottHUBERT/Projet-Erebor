@@ -27,7 +27,6 @@
                             <form action=/listeFichiers method="POST">
                                 @csrf
                                 <input type="text" name="idEspace" id="idEspace" value="{{$espace->espace->id}}" hidden>
-                                <input type="text" name="role" id="role" value="{{$espace->role}}" hidden>
                                 <button type=submit class="btn btn-success"><img src="../../../../Images/open.svg"></button>
                             </form>
                             @if($espace->role=="Gestionnaire")

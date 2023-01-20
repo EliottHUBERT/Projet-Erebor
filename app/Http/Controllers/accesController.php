@@ -119,4 +119,6 @@ public function add(Request $request){
     return view('validationAddAcces',['acces'=>$acces]);
 }
 
+
+
 }

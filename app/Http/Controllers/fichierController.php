@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\accesController;
 use App\Models\Fichier;
 use App\Models\Espace;
+use App\Models\Acces;
 use App\Http\Controllers\espaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +24,11 @@ class fichierController extends Controller
  */
     public function showAll(Request $request){
         $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
-        return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>Request(key :"role")]);
+        $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
+        if ($role){
+            return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role]);
+        }
+        return back()->with('Error','Vous ne passerez pas!');
 
     }
 
@@ -110,5 +117,10 @@ public static function countFileSize(int $id){
 
     return $size;
   }
+
+public function findAccesForConnectedUser(int $idEspace){
+    $role = Acces::where('idUser', '=', Auth::user()->id)->where('idEspace', '=', $idEspace)->first();
+    return $role;
+}
 
 }

@@ -60,7 +60,8 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     //___FICHIERS___
-    Route::get("/listeFichiers", [\App\Http\Controllers\fichierController::class, "showall"])->where("idEspace", "[0-9]+");
+    Route::post("/listeFichiers", [\App\Http\Controllers\fichierController::class, "showall"]);
+
     Route::post('/upload-file', [\App\Http\Controllers\fichierController::class, 'fileUpload'])->name('fileUpload');
 
     Route::delete('/delFichier/{id}',[\App\Http\Controllers\fichierController::class,"do_delete"])->where("id", "[0-9]+");
@@ -71,7 +72,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/addAcces', function () { return view('addAcces'); });
 
-    
+
     Route::post('/editAcces', [\App\Http\Controllers\accesController::class,"update"]);
     Route::put('/editAcces/valider', [\App\Http\Controllers\accesController::class,"do_update"]);
     Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);

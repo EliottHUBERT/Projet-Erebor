@@ -43,7 +43,7 @@ class espaceController extends Controller
     public function update(Request $request){
 
         $request->validate([
-            'idEspace' => 'required|integer'
+            'idEspace' => 'required'
         ]);
 
       $espace =  Espace::find(Request(key :"idEspace"));

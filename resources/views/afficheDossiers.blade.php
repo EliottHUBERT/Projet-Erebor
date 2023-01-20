@@ -24,12 +24,11 @@
                     <td>{{ $espace->espace->nbFiles }}</td>
                     <td>
                         <div class="btn-group">
-                            <form action=/listeFichiers method="get">
-
+                            <form action=/listeFichiers method="POST">
+                                @csrf
                                 <input type="text" name="idEspace" id="idEspace" value="{{$espace->espace->id}}" hidden>
                                 <input type="text" name="role" id="role" value="{{$espace->role}}" hidden>
                                 <button type=submit class="btn btn-success"><img src="../../../../Images/open.svg"></button>
-
                             </form>
                             @if($espace->role=="Gestionnaire")
                             <button class="btn btn-primary" onclick="location.href='/editDossier/{{$espace->espace->id}}'"><img src="../../../../Images/settings.svg"></button>
@@ -51,7 +50,13 @@
             </ul>
 
         </div>
-
+        <div>
+            @if ($message = Session::get('Error'))
+                            <div class="alert alert-danger">
+                                <strong>{{ $message }}</strong>
+                            </div>
+            @endif
+        </div>
     </div>
     </body>
 

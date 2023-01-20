@@ -33,7 +33,7 @@ public function showAccessByUser(){
     $lesAcces = Acces::where('idUser', '=', Auth::user()->id)->paginate(10);
     foreach($lesAcces as $acces){
         $acces->espace->nbFiles = fichierController::countFiles($acces->espace->id);
-        $acces->quota = fichierController::countFileSize($acces->espace->id);
+        $acces->espace->quota = fichierController::countFileSize($acces->espace->id);
       }
     return view('afficheDossiers',['espaces'=>$lesAcces]);
 

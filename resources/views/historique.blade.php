@@ -26,6 +26,9 @@
         <div class="text-center">
             <button class="btn btn-secondary mx-sm-3 mb-2" style="min-width:10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
         </div>
+        <ul class="pagination justify-content-center mb-0">
+            {{$logs->links("pagination::bootstrap-4")}}
+        </ul>
     </div>
     </body>
 </html>

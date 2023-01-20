@@ -51,10 +51,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/addDossier', function () { return view('addDossier'); });
     Route::put('/addDossier',[\App\Http\Controllers\DemandeEspaceController::class,"add"]);
 
-    Route::get('/delDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"delete"])->where("idEspace", "[0-9]+");
+    Route::post('/delDossier',[\App\Http\Controllers\espaceController::class,"delete"])->where("idEspace", "[0-9]+");
     Route::delete('/delDossier/valider',[\App\Http\Controllers\espaceController::class,"do_delete"]);
 
-    Route::get('/editDossier/{idEspace}',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
+    Route::post('/editDossier',[\App\Http\Controllers\espaceController::class,"update"])->where("idEspace", "[0-9]+");
     Route::put('/editDossier',[\App\Http\Controllers\DemandeModifEspaceController::class,"add"]);
 
 
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('download/{nom}', [\App\Http\Controllers\fichierController::class, 'downloadFile']);
 
     //___ACCES___
-    Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
+    Route::post('/detailDossier',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
 
     Route::post('/addAcces', [\App\Http\Controllers\accesController::class,"add"]);
 

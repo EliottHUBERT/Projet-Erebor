@@ -30,9 +30,25 @@
                                 <button type=submit class="btn btn-success"><img src="../../../../Images/open.svg"></button>
                             </form>
                             @if($espace->role=="Gestionnaire")
-                            <button class="btn btn-primary" onclick="location.href='/editDossier/{{$espace->espace->id}}'"><img src="../../../../Images/settings.svg"></button>
-                            <button class="btn btn-secondary" onclick="location.href='/detailDossier/{{$espace->espace->id}}'"><img src="../../../../Images/user.svg"></button>
-                            <button class="btn btn-danger" onclick="location.href='/delDossier/{{$espace->espace->id}}'"><img src="../../../../Images/trash.svg"></button>
+
+                            <form action=/editDossier method="POST">
+                                @csrf
+                                <input type="text" name="idEspace" id="idEspace" value="{{$espace->espace->id}}" hidden>
+                                <button type='submit' class="btn btn-primary"><img src="../../../../Images/settings.svg"></button>
+                            </form>
+
+                            <form action=/detailDossier method="POST">
+                                @csrf
+                                <input type="text" name="idEspace" id="idEspace" value="{{$espace->espace->id}}" hidden>
+                                <button type='submit' class="btn btn-secondary"><img src="../../../../Images/user.svg"></button>
+                            </form>
+                            
+                            <form action=/delDossier method="POST">
+                                @csrf
+                                <input type="text" name="idEspace" id="idEspace" value="{{$espace->espace->id}}" hidden>
+                                <button type='submit' class="btn btn-danger"><img src="../../../../Images/trash.svg"></button>
+                            </form>
+                           
                             @endif
                         </div>
                     </td>

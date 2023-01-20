@@ -15,8 +15,8 @@ class accesController extends Controller
  *
  * @param idEspace the id of the space where the file is located
  */
-public function showAccessByEspace($idEspace){
-    $lesAcces = Acces::where('idEspace', '=', $idEspace)->paginate(10);
+public function showAccessByEspace(Request $request){
+    $lesAcces = Acces::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
     return view('detailDossier',['lesAcces'=>$lesAcces]);
 
     }

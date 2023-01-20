@@ -24,7 +24,13 @@ class fichierController extends Controller
  */
     public function showAll(Request $request){
         $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
+        
+        if (Auth::user()->hasRole('admin')){
+          return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>'Gestionnaire']);
+        }
+
         $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
+
         if ($role){
             return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role->role]);
         }

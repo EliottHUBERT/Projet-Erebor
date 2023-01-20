@@ -47,7 +47,7 @@
         <div class="text-center">
         <form action="/addAcces" method="POST" class="form-example">
             @csrf
-            <input type="text" value="{{$acces->idEspace}}" name="idEspace" hidden>
+            <input type="text" value="{{$idEspace}}" name="idEspace" hidden>
             <button  type='submit' class="btn btn-success mb-2" style="min-width:10%"><img src="../../../../Images/adduser.svg" style="width: 25%"></button>
 
         </form>

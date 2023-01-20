@@ -47,12 +47,7 @@ class fichierController extends Controller
 
     public function fileUpload(Request $req){
 
-        $req->validate([
-        'idEspace'=> 'required|integer',
-        'file' => 'required|file'
-        ]);
-
-        $espace = espaceController::find(Request(key: 'idEspace'));
+        $espace = espaceController::find($req);
         $quotamax = $espace->quotaMax;
         $espacesize = fichierController::countFileSize(Request(key: 'idEspace'));
         $fileModel = new Fichier;
@@ -82,11 +77,7 @@ class fichierController extends Controller
  * @param request the id of the file
  */
   public function do_delete(Request $request){
-    $request->validate([
-        'idEspace' => 'required|integer',
-        'nom' => 'required|max:50',
-        'id' => 'required|integer'
-    ]);
+
     $path = "public/".Request(key :"idEspace")."/".Request(key :"nom");
 
     $file =  Fichier::find(Request(key :"id"));

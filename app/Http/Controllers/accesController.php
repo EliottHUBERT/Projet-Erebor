@@ -47,11 +47,6 @@ public function showAccessByUser(){
  */
 public function do_delete(Request $request){
 
-    $request->validate([
-        'idUser' => 'required|integer',
-        'idEspace' =>'required|integer',
-    ]);
-
     $acces =  Acces::where('idUser', '=', Request(key :"idUser"))
     ->where('idEspace', '=', Request(key :"idEspace"))
     ->first();
@@ -85,11 +80,6 @@ return view('editAcces',['acces'=>$acces]);
  */
 public function do_update(Request $request){
 
-    $request->validate([
-        'idUser' => 'required|integer',
-        'idEspace' =>'required|integer',
-    ]);
-
     Acces::where('idUser', '=', Request(key :"idUser"))
     ->where('idEspace', '=', Request(key :"idEspace"))
     ->update(['role'=>Request(key :"role")]);
@@ -104,11 +94,16 @@ public function do_update(Request $request){
  */
 public function add(Request $request){
 
-    $request->validate([
-        'idUser' => 'required|integer',
-        'idEspace' =>'required|integer',
-        'role' =>'required|max:50'
-    ]);
+return view('addAcces',['espace'=>Request(key :"idEspace")]);
+}
+
+  /**
+ * It creates the acces in the database with the data passed in the
+ * function
+ *
+ * @param request the data of the folder
+ */
+public function do_add(Request $request){
 
     $acces = new Acces;
     $acces->idUser = $request->idUser;

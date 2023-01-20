@@ -45,7 +45,12 @@
             </tbody>
         </table>
         <div class="text-center">
-            <button class="btn btn-success mb-2" style="min-width:10%" onclick="location.href='/addAcces/{{$acces->idEspace}}'"><img src="../../../../Images/adduser.svg" style="width: 25%"></button>
+        <form action="/addAcces" method="POST" class="form-example">
+            @csrf
+            <input type="text" value="{{$acces->idEspace}}" name="idEspace" hidden>
+            <button  type='submit' class="btn btn-success mb-2" style="min-width:10%"><img src="../../../../Images/adduser.svg" style="width: 25%"></button>
+
+        </form>
             <button class="btn btn-secondary mb-2" style="min-width: 10%" onclick="location.href='/listeDossiers'"><img src="../../../../Images/return.svg" style="width: 25%"></button>
             <ul class="pagination justify-content-center mb-0">
                 {{$lesAcces->links("pagination::bootstrap-4")}}

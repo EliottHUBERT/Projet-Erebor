@@ -70,7 +70,7 @@ Route::group(['middleware' => ['auth']], function() {
     //___ACCES___
     Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
 
-    Route::get('/addAcces', function () { return view('addAcces'); });
+    Route::post('/addAcces', [\App\Http\Controllers\accesController::class,"add"]);
 
 
     Route::post('/editAcces', [\App\Http\Controllers\accesController::class,"update"]);

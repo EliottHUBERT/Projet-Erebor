@@ -16,9 +16,20 @@ class accesController extends Controller
  * @param idEspace the id of the space where the file is located
  */
 public function showAccessByEspace(Request $request){
-    $lesAcces = Acces::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
-    return view('detailDossier',['lesAcces'=>$lesAcces,'idEspace'=>Request(key :"idEspace")]);
+        if(Auth::user()->hasRole('admin')){
+            $lesAcces = Acces::where('idEspace', '=', Request(key: 'idEspace'))->paginate(10);
+            return view('detailDossier',['lesAcces'=>$lesAcces]);
+        }
+        $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
+        if ($role){
+            if ($role->role == 'Gestionnaire'){
+                $lesAcces = Acces::where('idEspace', '=', Request(key: 'idEspace'))->paginate(10);
+                return view('detailDossier',['lesAcces'=>$lesAcces]);
+            }
+            return back()->with('Error','Vous ne passerez pas!');
+        }
 
+        return back()->with('Error','Vous ne passerez pas!');
     }
 
 
@@ -114,6 +125,10 @@ public function do_add(Request $request){
     return view('validationAddAcces',['acces'=>$acces]);
 }
 
+public function findAccesForConnectedUser(int $idEspace){
+    $role = Acces::where('idUser', '=', Auth::user()->id)->where('idEspace', '=', $idEspace)->first();
+    return $role;
+}
 
 
 }

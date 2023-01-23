@@ -42,7 +42,7 @@
                                 <input type="text" name="idEspace" id="idEspace" value="{{$espace->id}}" hidden>
                                 <button type='submit' class="btn btn-secondary"><img src="../../../../Images/user.svg"></button>
                             </form>
-                            
+
                             <form action=/delDossier method="POST">
                                 @csrf
                                 <input type="text" name="idEspace" id="idEspace" value="{{$espace->id}}" hidden>

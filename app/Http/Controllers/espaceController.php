@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Fichier;
@@ -22,13 +23,25 @@ class espaceController extends Controller
    * @param request the id of the folder
    */
     public function delete(Request $request){
-
-
-      $espace =  Espace::find(Request(key :"idEspace"));
-      $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
-      $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
-      $acces->delete();
-      return view('deleteDossier',['espace'=>$espace]);
+        if(Auth::user()->hasRole('admin')){
+            $espace =  Espace::find(Request(key :"idEspace"));
+            $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
+            $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
+            $acces->delete();
+            return view('deleteDossier',['espace'=>$espace]);
+        }
+        $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
+        if ($role){
+            if ($role->role == 'Gestionnaire'){
+                $espace =  Espace::find(Request(key :"idEspace"));
+                $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
+                $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
+                $acces->delete();
+                return view('deleteDossier',['espace'=>$espace]);
+            }
+            return back()->with('Error','Vous ne passerez pas!');
+        }
+        return back()->with('Error','Vous ne passerez pas!');
     }
 
      /**
@@ -39,9 +52,24 @@ class espaceController extends Controller
    */
     public function update(Request $request){
 
+        if(Auth::user()->hasRole('admin')){
+            $espace =  Espace::find(Request(key :"idEspace"));
+            $espace->nbFiles = fichierController::countFiles($espace->id);
+            $espace->quota = fichierController::countFileSize($espace->id);
+            return view('editDossier',['espace'=>$espace]);
+        }
+        $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
+        if ($role){
+            if ($role->role == 'Gestionnaire'){
+                $espace =  Espace::find(Request(key :"idEspace"));
+                $espace->nbFiles = fichierController::countFiles($espace->id);
+                $espace->quota = fichierController::countFileSize($espace->id);
+                return view('editDossier',['espace'=>$espace]);
+            }
+            return back()->with('Error','Vous ne passerez pas!');
+        }
 
-      $espace =  Espace::find(Request(key :"idEspace"));
-      return view('editDossier',['espace'=>$espace]);
+        return back()->with('Error','Vous ne passerez pas!');
     }
 
      /**
@@ -150,5 +178,10 @@ class espaceController extends Controller
       $demande->delete();
       return view('validationEditDossier',['espace'=>$espace]);
   }
+
+  public function findAccesForConnectedUser(int $idEspace){
+    $role = Acces::where('idUser', '=', Auth::user()->id)->where('idEspace', '=', $idEspace)->first();
+    return $role;
+}
 
 }

@@ -23,15 +23,14 @@ class fichierController extends Controller
  * @param idEspace the id of the space where the file is located
  */
     public function showAll(Request $request){
-        $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
-        
         if (Auth::user()->hasRole('admin')){
-          return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>'Gestionnaire']);
+            $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
+            return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>'Gestionaire']);
         }
-
         $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
 
         if ($role){
+            $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
             return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role->role]);
         }
         return back()->with('Error','Vous ne passerez pas!');

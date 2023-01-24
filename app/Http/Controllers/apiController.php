@@ -25,8 +25,24 @@ class apiController extends Controller
      *
      * @return The first user with the name that matches the name passed in.
      */
-    public function getUsers($name){
-        $users = User::where('name', 'like', $name.'%')->get();
-        return Response()->json($users);
+    public function getUsers(Request $request){
+        
+        $name = $request->get('query');
+        $users = User::where('name', 'like', '%'.$name.'%')->get();
+        return response()->json($users);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function autocomplete(Request $request)
+    {
+        $data = User::where('name', 'LIKE', '%'. $request->get('query'). '%')
+                    ->get();
+     
+        return response()->json($data);
     }
 }

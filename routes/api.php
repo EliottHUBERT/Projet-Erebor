@@ -20,5 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('users/',[\App\Http\Controllers\apiController::class,"getAll"]);
+Route::get('userByName',[\App\Http\Controllers\apiController::class,"getUsers"])->name('autocomplete');
 
-Route::get('users/{name}',[\App\Http\Controllers\apiController::class,"getUsers"]);
+/*
+OLD API ROUTES
+Route::get('userByName/',[\App\Http\Controllers\apiController::class,"getUsers"]);
+*/
+

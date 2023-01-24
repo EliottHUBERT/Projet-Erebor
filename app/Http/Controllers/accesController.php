@@ -122,7 +122,7 @@ public function do_add(Request $request){
     $acces->role = $request->role;
 
     $acces->save();
-    return view('validationAddAcces',['acces'=>$acces]);
+    return view('validationAddAcces',['acces'=>$request->search]);
 }
 
 public function findAccesForConnectedUser(int $idEspace){

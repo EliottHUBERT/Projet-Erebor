@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::post('/editAcces', [\App\Http\Controllers\accesController::class,"update"]);
     Route::put('/editAcces/valider', [\App\Http\Controllers\accesController::class,"do_update"]);
+    Route::put('/addAcces/valider', [\App\Http\Controllers\accesController::class,"do_add"]);
     Route::delete('/delAcces/valider', [\App\Http\Controllers\accesController::class,"do_delete"]);
 
     //___ADMIN___

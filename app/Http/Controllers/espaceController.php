@@ -25,18 +25,12 @@ class espaceController extends Controller
     public function delete(Request $request){
         if(Auth::user()->hasRole('admin')){
             $espace =  Espace::find(Request(key :"idEspace"));
-            $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
-            $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
-            $acces->delete();
             return view('deleteDossier',['espace'=>$espace]);
         }
         $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
         if ($role){
             if ($role->role == 'Gestionnaire'){
                 $espace =  Espace::find(Request(key :"idEspace"));
-                $acces =  Acces::where('idEspace', '=', Request(key :"idEspace"));
-                $fichiers = Fichier::where('idEspace', '=', Request(key :"idEspace"));
-                $acces->delete();
                 return view('deleteDossier',['espace'=>$espace]);
             }
             return back()->with('Error','Vous ne passerez pas!');

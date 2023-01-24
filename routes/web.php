@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('download/{nom}', [\App\Http\Controllers\fichierController::class, 'downloadFile']);
 
     //___ACCES___
-    Route::get('/detailDossier/{idEspace}',[\App\Http\Controllers\accesController::class,"showAccessByEspace"])->where("idEspace", "[0-9]+");
+    Route::post('/detailDossier',[\App\Http\Controllers\accesController::class,"showAccessByEspace"]);
 
     Route::post('/addAcces', [\App\Http\Controllers\accesController::class,"add"]);
 

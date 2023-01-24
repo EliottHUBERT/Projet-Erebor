@@ -33,7 +33,7 @@ class fichierController extends Controller
             $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
             return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role->role]);
         }
-        return back()->with('Error','Vous ne passerez pas!');
+        return back()->with('Error','Vous ne passerez pas !');
 
     }
 

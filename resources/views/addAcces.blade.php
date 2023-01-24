@@ -15,7 +15,7 @@
         <div class="form-example">
             <label for="name">Utilisateur : </label>
             <div classs="form-group">
-            <input type="text" id="search" name="search" placeholder="Search" class="form-control" autocomplete="off"/>
+            <input type="text" id="search" name="search" class="form-control" autocomplete="off"/>
             <input type="hidden" name="idUser" id="idUser" hidden>
         </div>
         </div>
@@ -48,6 +48,7 @@
     var path = "{{ route('autocomplete') }}";
   
     $('#search').typeahead({
+
         source: function (query, process) {
             return $.get(path, {
                 query: query
@@ -59,6 +60,9 @@
         updater: function(selection){
             var inputId = document.getElementById("idUser");
             inputId.value = selection["id"];
+
+            var inputName = document.getElementById("search");
+            inputName.value = selection["name"];
     },
 });
 

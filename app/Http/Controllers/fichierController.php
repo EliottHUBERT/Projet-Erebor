@@ -24,13 +24,13 @@ class fichierController extends Controller
  */
     public function showAll(Request $request){
         if (Auth::user()->hasRole('admin')){
-            $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
+            $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->get();
             return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>'Gestionaire']);
         }
         $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
 
         if ($role){
-            $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->paginate(10);
+            $fichiers =  Fichier::where('idEspace', '=', Request(key :"idEspace"))->get();
             return view('afficheFichiers',['fichiers'=>$fichiers,'idEspace'=>Request(key :"idEspace"),'role'=>$role->role]);
         }
         return back()->with('Error','Vous ne passerez pas !');

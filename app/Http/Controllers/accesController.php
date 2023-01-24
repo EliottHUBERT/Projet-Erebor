@@ -17,13 +17,13 @@ class accesController extends Controller
  */
 public function showAccessByEspace(Request $request){
         if(Auth::user()->hasRole('admin')){
-            $lesAcces = Acces::where('idEspace', '=', Request(key: 'idEspace'))->paginate(10);
+            $lesAcces = Acces::where('idEspace', '=', Request(key: 'idEspace'))->get();
             return view('detailDossier',['lesAcces'=>$lesAcces, 'idEspace'=>Request(key: 'idEspace')]);
         }
         $role = $this->findAccesForConnectedUser(Request(key :"idEspace"));
         if ($role){
             if ($role->role == 'Gestionnaire'){
-                $lesAcces = Acces::where('idEspace', '=', Request(key: 'idEspace'))->paginate(10);
+                $lesAcces = Acces::where('idEspace', '=', Request(key: 'idEspace'))->get();
                 return view('detailDossier',['lesAcces'=>$lesAcces,'idEspace'=>Request(key: 'idEspace')]);
             }
             return back()->with('Error','Vous ne passerez pas!');
